@@ -1,0 +1,25 @@
+#homeLogo {
+	width: 100%;
+	max-width: 300px;
+	margin: 0 auto;
+	padding: 50px 0;
+	display: block;
+	box-sizing: border-box;
+}
+
+#homeCog {
+	position: absolute;
+	right: var(--margin);
+	top: var(--margin);
+	width: 30px;
+	cursor: pointer;
+}
+
+.homeContent {
+	width: 100%;
+	max-width: 300px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
