@@ -4,6 +4,8 @@ import "./styles/index.css";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import Meyer from "./pages/Meyer";
+import DiceGames from "./pages/DiceGames";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,6 +14,8 @@ root.render(
 			<Routes>
 				<Route path='*' element={<HomePage />} />
 				<Route path='/' element={<HomePage />} />
+				<Route path='/dice' element={<DiceGames />} />
+				<Route path='/meyer' element={<Meyer />} />
 			</Routes>
 		</BrowserRouter>
 	</React.StrictMode>

@@ -1,0 +1,27 @@
+#header {
+	width: 100%;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	padding: var(--margin);
+	box-sizing: border-box;
+	margin-bottom: var(--margin);
+}
+
+.headerLogo {
+	width: 130px;
+}
+
+.headerGear {
+	width: 30px;
+	position: absolute;
+	top: var(--margin);
+	right: var(--margin);
+}
+
+.headerHome {
+	width: 30px;
+	position: absolute;
+	top: var(--margin);
+	left: var(--margin);
+}

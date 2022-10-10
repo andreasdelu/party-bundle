@@ -1,1 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="Lag_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40.41 44.63"><defs><style>.cls-1{fill:#fff;}.cls-2,.cls-3{fill:#e30613;}.cls-3{font-family:ArticulatCF-ExtraBold, 'Articulat CF';font-size:7.02px;}.cls-4{filter:url(#drop-shadow-2);}.cls-5{filter:url(#drop-shadow-3);}.cls-6{filter:url(#drop-shadow-1);}</style><filter id="drop-shadow-1" filterUnits="userSpaceOnUse"><feOffset dx="1" dy="1"/><feGaussianBlur result="blur" stdDeviation="1"/><feFlood flood-color="#000" flood-opacity=".03"/><feComposite in2="blur" operator="in"/><feComposite in="SourceGraphic"/></filter><filter id="drop-shadow-2" filterUnits="userSpaceOnUse"><feOffset dx="1" dy="1"/><feGaussianBlur result="blur-2" stdDeviation="1"/><feFlood flood-color="#000" flood-opacity=".03"/><feComposite in2="blur-2" operator="in"/><feComposite in="SourceGraphic"/></filter><filter id="drop-shadow-3" filterUnits="userSpaceOnUse"><feOffset dx="1" dy="1"/><feGaussianBlur result="blur-3" stdDeviation="1"/><feFlood flood-color="#000" flood-opacity=".03"/><feComposite in2="blur-3" operator="in"/><feComposite in="SourceGraphic"/></filter></defs><g id="Lag_3"><g id="card" class="cls-6"><rect class="cls-1" x="7.69" y="2.85" width="27.24" height="38.94" rx="2.8" ry="2.8" transform="translate(9.95 -6.37) rotate(22.07)"/><g id="heart"><ellipse class="cls-2" cx="19.97" cy="19.95" rx="3.09" ry="2.88" transform="translate(-6.23 30.44) rotate(-66.8)"/><ellipse class="cls-2" cx="24.26" cy="21.78" rx="3.09" ry="2.88" transform="translate(-5.32 35.5) rotate(-66.8)"/><path class="cls-2" d="M19.24,26.77l-2.07-5.82,5.49-1.35,2.8,4.91-5.64,2.51c-.24,.11-.5,0-.58-.25Z"/></g><text class="cls-3" transform="translate(15.81 7.29) rotate(22.07)"><tspan x="0" y="0">A</tspan></text><text class="cls-3" transform="translate(22.12 35.87) rotate(22.07) scale(1 -1)"><tspan x="0" y="0">A</tspan></text></g><g id="card-2" class="cls-4"><rect class="cls-1" x="3.2" y="1.97" width="27.24" height="38.94" rx="2.8" ry="2.8" transform="translate(4.42 -2.82) rotate(11.04)"/><g id="heart-2"><ellipse class="cls-2" cx="15.05" cy="19.37" rx="3.09" ry="2.88" transform="translate(-7.06 30) rotate(-77.84)"/><ellipse class="cls-2" cx="19.61" cy="20.35" rx="3.09" ry="2.88" transform="translate(-4.42 35.24) rotate(-77.84)"/><path class="cls-2" d="M15.64,26.21l-3.15-5.32,5.13-2.37,3.69,4.28-5.05,3.55c-.21,.15-.49,.09-.62-.13Z"/></g><text class="cls-3" transform="translate(8.55 7.74) rotate(11.04)"><tspan x="0" y="0">A</tspan></text><text class="cls-3" transform="translate(20.21 34.59) rotate(11.04) scale(1 -1)"><tspan x="0" y="0">A</tspan></text></g><g id="card-3" class="cls-5"><rect class="cls-1" x="0" y="1.21" width="27.24" height="38.94" rx="2.8" ry="2.8"/><g id="heart-3"><ellipse class="cls-2" cx="11.49" cy="18.99" rx="3.09" ry="2.88" transform="translate(-7.72 30.1) rotate(-88.88)"/><ellipse class="cls-2" cx="16.15" cy="19.08" rx="3.09" ry="2.88" transform="translate(-3.24 34.85) rotate(-88.88)"/><path class="cls-2" d="M13.37,25.58l-4.11-4.62,4.58-3.31,4.44,3.5-4.28,4.45c-.18,.19-.46,.18-.64-.01Z"/></g><text class="cls-3" transform="translate(2.88 8.82)"><tspan x="0" y="0">A</tspan></text><text class="cls-3" transform="translate(19.46 32.94) scale(1 -1)"><tspan x="0" y="0">A</tspan></text></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.5.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Lag_2_00000094585983318808919150000009186891636570935199_"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 40.4 44.6"
+	 style="enable-background:new 0 0 40.4 44.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#E30613;}
+	.st2{font-family:'ArticulatCF-ExtraBold';}
+	.st3{font-size:7.02px;}
+	.st4{enable-background:new    ;}
+</style>
+<g id="Lag_3">
+	<g id="card">
+		<path class="st0" d="M18.6,0.2l20.1,8.1c1.4,0.6,2.1,2.2,1.5,3.6L27.7,42.9c-0.6,1.4-2.2,2.1-3.6,1.5L4,36.3
+			c-1.4-0.6-2.1-2.2-1.5-3.6L15,1.8C15.5,0.3,17.2-0.4,18.6,0.2z"/>
+		<g id="heart">
+			<ellipse transform="matrix(0.3939 -0.9191 0.9191 0.3939 -6.226 30.4458)" class="st1" cx="20" cy="19.9" rx="3.1" ry="2.9"/>
+			<ellipse transform="matrix(0.3939 -0.9191 0.9191 0.3939 -5.32 35.4954)" class="st1" cx="24.3" cy="21.8" rx="3.1" ry="2.9"/>
+			<path class="st1" d="M19.2,26.8L17.2,21l5.5-1.4l2.8,4.9L19.8,27C19.6,27.1,19.3,27,19.2,26.8z"/>
+		</g>
+		<text transform="matrix(0.9267 0.3757 -0.3757 0.9267 15.81 7.29)" class="st1 st2 st3">A</text>
+		<text transform="matrix(0.9267 0.3757 0.3757 -0.9267 22.1201 35.8698)" class="st1 st2 st3">A</text>
+	</g>
+	<g id="card-2">
+		<path class="st0" d="M9.9,0.3l21.2,4.1c1.5,0.3,2.5,1.8,2.2,3.3L27,40.4c-0.3,1.5-1.8,2.5-3.3,2.2L2.5,38.5
+			C1,38.2,0,36.7,0.3,35.2L6.6,2.5C6.9,1,8.4,0,9.9,0.3z"/>
+		<g id="heart-2">
+			<ellipse transform="matrix(0.2106 -0.9776 0.9776 0.2106 -7.0569 29.9961)" class="st1" cx="15" cy="19.4" rx="3.1" ry="2.9"/>
+			<ellipse transform="matrix(0.2106 -0.9776 0.9776 0.2106 -4.4252 35.2329)" class="st1" cx="19.6" cy="20.4" rx="3.1" ry="2.9"/>
+			<path class="st1" d="M15.6,26.2l-3.2-5.3l5.1-2.4l3.7,4.3l-5.1,3.5C16,26.5,15.8,26.4,15.6,26.2L15.6,26.2z"/>
+		</g>
+		<text transform="matrix(0.9815 0.1915 -0.1915 0.9815 8.5501 7.74)" class="st1 st2 st3">A</text>
+		<text transform="matrix(0.9815 0.1915 0.1915 -0.9815 20.21 34.5896)" class="st1 st2 st3">A</text>
+	</g>
+	<g id="card-3">
+		<path class="st0" d="M2.8,1.2h21.6c1.5,0,2.8,1.3,2.8,2.8v33.3c0,1.5-1.3,2.8-2.8,2.8H2.8c-1.5,0-2.8-1.3-2.8-2.8V4
+			C0,2.5,1.3,1.2,2.8,1.2z"/>
+		<g id="heart-3">
+			
+				<ellipse transform="matrix(1.954649e-02 -0.9998 0.9998 1.954649e-02 -7.7134 30.1011)" class="st1" cx="11.5" cy="19" rx="3.1" ry="2.9"/>
+			
+				<ellipse transform="matrix(1.954649e-02 -0.9998 0.9998 1.954649e-02 -3.2361 34.8521)" class="st1" cx="16.2" cy="19.1" rx="3.1" ry="2.9"/>
+			<path class="st1" d="M13.4,25.6L9.3,21l4.6-3.3l4.4,3.5L14,25.6C13.8,25.8,13.5,25.8,13.4,25.6L13.4,25.6z"/>
+		</g>
+		<g class="st4">
+			<path class="st1" d="M4.7,3.9h1.5L8,8.8H6.8L6.5,8h-2L4.2,8.8H3L4.7,3.9z M6.2,7.1l-0.7-2H5.5l-0.7,2H6.2z"/>
+		</g>
+		<g class="st4">
+			<path class="st1" d="M19.6,32.9h1.2l0.3,0.8h2l0.3-0.8h1.2l-1.8,4.9h-1.5L19.6,32.9z M21.4,34.6l0.7,2h0.1l0.7-2H21.4z"/>
+		</g>
+	</g>
+</g>
+</svg>

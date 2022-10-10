@@ -1,9 +1,8 @@
-.buttonBig {
+.buttonBig,
+.button {
 	background: linear-gradient(#ff6cee, #777eff);
-	width: 100%;
-	max-width: 140px;
-	height: auto;
-	max-height: 140px;
+	width: 140px;
+	height: 140px;
 	aspect-ratio: 1;
 	border-radius: 20px;
 	display: flex;
@@ -14,7 +13,16 @@
 	transition: scale 0.2s, box-shadow 0.2s;
 }
 
-.buttonBig:hover {
+.button {
+	aspect-ratio: 0;
+	border-radius: 10px;
+	justify-content: center;
+	width: 160px;
+	height: fit-content;
+}
+
+.buttonBig:hover,
+.button:hover {
 	scale: 1.02;
 	box-shadow: 0 0 10px rgba(217, 0, 255, 0.5);
 }
@@ -23,7 +31,7 @@
 	width: 50%;
 	display: block;
 	margin: auto 0;
-	filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+	filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.1));
 }
 
 .buttonText {
@@ -33,4 +41,9 @@
 	font-size: 1.1rem;
 	margin: 0;
 	margin-bottom: 0.7rem;
+}
+
+.button .buttonText {
+	margin: 0.8rem 0;
+	font-size: 1.5rem;
 }

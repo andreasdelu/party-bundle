@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/HomePage.css";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import cog from "../assets/gear.svg";
 import cards from "../assets/cards.svg";
@@ -14,7 +15,9 @@ export default function HomePage() {
 			<p className='bodyText'>Choose a game type:</p>
 			<div className='homeContent'>
 				<ButtonBig image={cards} text={"Card Games"} />
-				<ButtonBig image={dice} text={"Dice Games"} />
+				<Link className='buttonLink' to={"/dice"}>
+					<ButtonBig image={dice} text={"Dice Games"} />
+				</Link>
 				<ButtonBig image={cards} text={"Board Games"} />
 				<ButtonBig size={"70%"} image={controller} text={"Mini Games"} />
 			</div>
