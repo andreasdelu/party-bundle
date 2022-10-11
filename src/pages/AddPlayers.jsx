@@ -34,10 +34,11 @@ export default function AddPlayers() {
 			</div>
 			<dialog id='addPlayer'>
 				<h2>Add Player:</h2>
-				<label htmlFor='uploadPhoto'>Add a picture:</label>
-				<input type='file' capture='user' id='uploadPhoto' accept='image/*' />
 				<label htmlFor='playerName'>Enter player name:</label>
 				<input type='text' placeholder='Name...' id='playerName' />
+				<label htmlFor='uploadPhoto'>Add a picture:</label>
+				<input type='file' capture='user' id='uploadPhoto' accept='image/*' />
+				<button>Add</button>
 			</dialog>
 		</>
 	);
