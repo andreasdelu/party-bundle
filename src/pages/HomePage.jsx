@@ -14,12 +14,28 @@ export default function HomePage() {
 			<img id='homeCog' src={cog} alt='' />
 			<p className='bodyText'>Choose a game type:</p>
 			<div className='homeContent'>
-				<ButtonBig image={cards} text={"Card Games"} />
+				<ButtonBig
+					extraStyle={{ size: "50%", dropOpacity: 0 }}
+					image={cards}
+					text={"Card Games"}
+				/>
 				<Link className='buttonLink' to={"/dice"}>
-					<ButtonBig image={dice} text={"Dice Games"} />
+					<ButtonBig
+						extraStyle={{ size: "50%", dropOpacity: 0.2 }}
+						image={dice}
+						text={"Dice Games"}
+					/>
 				</Link>
-				<ButtonBig image={cards} text={"Board Games"} />
-				<ButtonBig size={"70%"} image={controller} text={"Mini Games"} />
+				<ButtonBig
+					extraStyle={{ size: "50%", dropOpacity: 0 }}
+					image={cards}
+					text={"Board Games"}
+				/>
+				<ButtonBig
+					extraStyle={{ size: "70%", dropOpacity: 0 }}
+					image={controller}
+					text={"Mini Games"}
+				/>
 			</div>
 		</>
 	);

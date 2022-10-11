@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Meyer from "./pages/Meyer";
 import DiceGames from "./pages/DiceGames";
+import Difficulty from "./pages/Difficulty";
+import AddPlayers from "./pages/AddPlayers";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +18,8 @@ root.render(
 				<Route path='/' element={<HomePage />} />
 				<Route path='/dice' element={<DiceGames />} />
 				<Route path='/meyer' element={<Meyer />} />
+				<Route path='/difficulty' element={<Difficulty />} />
+				<Route path='/players' element={<AddPlayers />} />
 			</Routes>
 		</BrowserRouter>
 	</React.StrictMode>
