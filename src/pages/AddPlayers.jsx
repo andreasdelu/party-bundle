@@ -101,6 +101,7 @@ export default function AddPlayers() {
 							id='playerName'
 							required
 							maxLength={12}
+							autoComplete='off'
 						/>
 						<small>(Max 12 characters)</small>
 						<label htmlFor='uploadPhoto'>Add a picture:</label>
