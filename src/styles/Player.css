@@ -1,0 +1,39 @@
+.playerCard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 120px;
+}
+
+.playerImageContainer {
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+
+.playerImageBackground {
+	background: linear-gradient(#6cc6ff, #777eff);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	isolation: isolate;
+	z-index: -1;
+	border-radius: 50%;
+}
+
+.playerImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.playerName {
+	font-size: 1.2rem;
+	color: white;
+	font-weight: 600;
+	margin-top: 8px;
+	text-align: center;
+}

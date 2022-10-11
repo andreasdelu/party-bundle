@@ -1,7 +1,29 @@
-.btnContainer {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.playerContainer {
+	max-width: fit-content;
+	display: grid;
+	place-items: center;
+	grid-auto-rows: auto;
+	grid-template-columns: 1fr 1fr;
 	gap: 20px;
+	margin: 0 auto 80px auto;
+}
+
+.addButton {
+	background: linear-gradient(#6cc6ff, #777eff);
+	border: none;
+	width: 2.5rem;
+	height: 2.5rem;
+	color: white;
+	font-weight: 600;
+	font-size: 2rem;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	grid-column: span 2;
+}
+
+.addButton img {
+	width: 1.1rem;
 }
