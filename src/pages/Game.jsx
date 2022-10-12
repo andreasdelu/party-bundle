@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Meyer from "../components/games/Meyer";
 
@@ -9,7 +9,7 @@ export default function Game() {
 
 	useEffect(() => {
 		setDifficulty(diff.split("-")[1]);
-	}, []);
+	}, [diff]);
 
 	return (
 		<>
