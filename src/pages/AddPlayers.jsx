@@ -4,13 +4,15 @@ import plus from "../assets/plus.svg";
 import close from "../assets/close.svg";
 import camera from "../assets/camera.svg";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Button from "../components/Button";
 import Player from "../components/Player";
 
 export default function AddPlayers() {
 	const [userImage, setUserImage] = useState("");
 	const [userList, setUserList] = useState([]);
+
+	const { game } = useParams();
 
 	function dialogImage(e) {
 		let reader = new FileReader();
@@ -106,9 +108,13 @@ export default function AddPlayers() {
 					<img src={plus} alt='plus' />
 				</button>
 			</div>
-			<Link to={"/difficulty"}>
-				<Button classes={"buttonFixed"} text={"Start game"} />
-			</Link>
+			{userList.length ? (
+				<Link className='buttonLink' to={`/game/${game}/difficulty/`}>
+					<Button classes={"buttonFixed"} text={"Next"} />
+				</Link>
+			) : (
+				<Button classes={"buttonFixed buttonDisabled"} text={"Next"} />
+			)}
 			<dialog id='addPlayer'>
 				<div className='dialogContainer'>
 					<img className='dialogClose' src={close} alt='' />

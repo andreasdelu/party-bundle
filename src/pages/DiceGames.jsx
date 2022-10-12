@@ -10,7 +10,7 @@ export default function DiceGames() {
 			<Header />
 			<p className='bodyText'>Choose a game:</p>
 			<div className='btnContainer'>
-				<Link className='buttonLink' to={"/players"}>
+				<Link className='buttonLink' to={"/game/meyer/players"}>
 					<Button text={"Meyer"} />
 				</Link>
 				<Button text={"Snyd"} />
