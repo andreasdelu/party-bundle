@@ -8,6 +8,10 @@
 	margin: 0 auto 80px auto;
 }
 
+.playerContainer > div:only-of-type {
+	grid-column: span 2;
+}
+
 .addButton {
 	background: linear-gradient(#6cc6ff, #777eff);
 	border: none;

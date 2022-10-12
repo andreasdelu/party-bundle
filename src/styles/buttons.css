@@ -44,5 +44,12 @@
 
 .button .buttonText {
 	margin: 0.8rem 0;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
+}
+
+.buttonFixed {
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
 }

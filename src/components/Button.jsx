@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Button({ text }) {
+export default function Button({ text, classes }) {
 	return (
 		<>
-			<div className='button'>
+			<div className={`button ${classes}`}>
 				<p className='buttonText'>{text}</p>
 			</div>
 		</>

@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/buttons.css";
 
 export default function ButtonBig({ extraStyle, image, text }) {
-	console.log(extraStyle);
 	return (
 		<>
 			<div className='buttonBig'>

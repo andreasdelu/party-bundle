@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/AddPlayers.css";
 import plus from "../assets/plus.svg";
 import close from "../assets/close.svg";
 import camera from "../assets/camera.svg";
 import Header from "../components/Header";
-/* import { Link } from "react-router-dom";
-import Button from "../components/Button"; */
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
 import Player from "../components/Player";
 
 export default function AddPlayers() {
@@ -25,7 +25,6 @@ export default function AddPlayers() {
 			let img = new Image();
 			img.onload = function () {
 				let ratio;
-				console.log(this.width + " " + this.height);
 				if (this.width > this.height) {
 					ratio = this.width / this.height;
 					canvas.height = canvas.width / ratio;
@@ -48,11 +47,26 @@ export default function AddPlayers() {
 			name: e.target.name.value,
 			image: userImage,
 		};
-		setUserList([...userList, user]);
+		let newList = [...userList, user];
+		setUserList(newList);
+		sessionStorage.setItem("players", JSON.stringify(newList));
 		document.getElementById("addPlayer").close();
+
 		e.target.reset();
 		setUserImage("");
 	}
+
+	function removePlayer(id) {
+		let newList = userList.filter((user) => user.id !== id);
+		sessionStorage.setItem("players", JSON.stringify(newList));
+		setUserList(newList);
+	}
+
+	useEffect(() => {
+		if (sessionStorage.getItem("players")) {
+			setUserList(JSON.parse(sessionStorage.getItem("players")));
+		}
+	}, []);
 
 	function openDialog() {
 		const dialog = document.getElementById("addPlayer");
@@ -67,6 +81,8 @@ export default function AddPlayers() {
 				event.clientX <= rect.left + rect.width;
 			if (!isInDialog || event.target === closeBtn) {
 				dialog.close();
+				document.getElementById("addForm").reset();
+				setUserImage("");
 			}
 		});
 	}
@@ -78,6 +94,8 @@ export default function AddPlayers() {
 			<div className='playerContainer'>
 				{userList.map((user) => (
 					<Player
+						removable={true}
+						onClick={removePlayer}
 						key={user.id}
 						id={user.id}
 						name={user.name}
@@ -88,6 +106,9 @@ export default function AddPlayers() {
 					<img src={plus} alt='plus' />
 				</button>
 			</div>
+			<Link to={"/difficulty"}>
+				<Button classes={"buttonFixed"} text={"Start game"} />
+			</Link>
 			<dialog id='addPlayer'>
 				<div className='dialogContainer'>
 					<img className='dialogClose' src={close} alt='' />
