@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Lag_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.7 50.07">
+	<defs>
+		<style>
+			.cls-1{fill:#fff;}
+		</style>
+	</defs>
+	<g id="House">
+		<g>
+			<rect class="cls-1" x="-4.59" y="33.61" width="36.87" height="5.23" rx="2.5" ry="2.5" transform="translate(-1.97 71.63) rotate(-135)" />
+			<rect class="cls-1" x="-4.59" y="11.23" width="36.87" height="5.23" rx="2.5" ry="2.5" transform="translate(-5.74 13.85) rotate(-45)" />
+		</g>
+	</g>
+</svg>

@@ -15,21 +15,21 @@ export default function Difficulty() {
 			<div className='centerContainer'>
 				<Link className='buttonLink' to={`/game/${game}/diff-1`}>
 					<ButtonBig
-						extraStyle={{ size: "35%", dropOpacity: "0.2" }}
+						extraStyle={{ size: "45%", dropOpacity: "0.2" }}
 						image={diff1}
 						text={"Lightweight"}
 					/>
 				</Link>
 				<Link className='buttonLink' to={`/game/${game}/diff-2`}>
 					<ButtonBig
-						extraStyle={{ size: "35%", dropOpacity: "0.2" }}
+						extraStyle={{ size: "45%", dropOpacity: "0.2" }}
 						image={diff2}
 						text={"Seasoned"}
 					/>
 				</Link>
 				<Link className='buttonLink' to={`/game/${game}/diff-3`}>
 					<ButtonBig
-						extraStyle={{ size: "35%", dropOpacity: "0.2" }}
+						extraStyle={{ size: "50%", dropOpacity: "0.2" }}
 						image={diff3}
 						text={"Veteran"}
 					/>

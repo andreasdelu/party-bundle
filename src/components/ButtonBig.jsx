@@ -8,7 +8,7 @@ export default function ButtonBig({ extraStyle, image, text }) {
 				{extraStyle ? (
 					<img
 						style={{
-							width: extraStyle.size,
+							height: extraStyle.size,
 							filter: `drop-shadow(0 0 3px rgba(0, 0, 0, ${extraStyle.dropOpacity}))`,
 						}}
 						className='buttonImage'

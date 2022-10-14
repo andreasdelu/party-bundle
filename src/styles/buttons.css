@@ -19,6 +19,7 @@
 	justify-content: center;
 	width: 200px;
 	height: fit-content;
+	padding: 0.6rem 0;
 }
 
 .buttonBig:hover,
@@ -28,7 +29,7 @@
 }
 
 .buttonImage {
-	width: 50%;
+	height: 50%;
 	display: block;
 	margin: auto 0;
 }
@@ -40,11 +41,13 @@
 	font-size: 1.1rem;
 	margin: 0;
 	margin-bottom: 0.7rem;
+	user-select: none;
 }
 
 .button .buttonText {
-	margin: 0.8rem 0;
+	margin: 0;
 	font-size: 1.2rem;
+	user-select: none;
 }
 
 .buttonFixed {
@@ -68,4 +71,18 @@
 	top: 0;
 	left: 0;
 	opacity: 0.5;
+}
+
+.centerAbsolute {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	isolation: isolate;
+	z-index: 2;
+}
+
+.fitWidth {
+	width: fit-content !important;
+	padding: 0.5rem 1rem;
 }

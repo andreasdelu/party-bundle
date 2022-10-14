@@ -1,11 +1,17 @@
 import React from "react";
 
-export default function Button({ text, classes }) {
+export default function Button({ text, classes, onClick }) {
 	return (
 		<>
-			<div className={`button ${classes}`}>
-				<p className='buttonText'>{text}</p>
-			</div>
+			{onClick ? (
+				<div onClick={onClick} className={`button ${classes}`}>
+					<p className='buttonText'>{text}</p>
+				</div>
+			) : (
+				<div className={`button ${classes}`}>
+					<p className='buttonText'>{text}</p>
+				</div>
+			)}
 		</>
 	);
 }

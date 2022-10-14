@@ -1,0 +1,12 @@
+.game__container {
+	display: block;
+	max-width: 55vh;
+	padding: var(--margin);
+	padding-top: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.gameTitle {
+	margin-top: 0;
+}

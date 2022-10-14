@@ -5,23 +5,27 @@
 	justify-content: center;
 	padding: var(--margin);
 	box-sizing: border-box;
-	margin-bottom: var(--margin);
+	max-height: 100px;
 }
 
 .headerLogo {
-	width: 130px;
+	height: 55px;
 }
 
 .headerGear {
 	width: 30px;
 	position: absolute;
-	top: var(--margin);
-	right: var(--margin);
+	top: 0;
+	right: 0;
+	padding: var(--margin);
+	cursor: pointer;
 }
 
-.headerHome {
-	width: 30px;
+.headerArrow {
+	height: 30px;
 	position: absolute;
-	top: var(--margin);
-	left: var(--margin);
+	top: 0;
+	left: 0;
+	padding: var(--margin);
+	cursor: pointer;
 }

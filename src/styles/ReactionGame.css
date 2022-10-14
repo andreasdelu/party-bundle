@@ -1,0 +1,32 @@
+h1 {
+	font-size: 30px;
+	text-align: center;
+	padding: 5px;
+}
+
+p {
+	font-size: 20px;
+	text-align: center;
+	padding: 5px;
+}
+
+#container {
+	display: flex;
+	margin: auto;
+	justify-content: center;
+}
+
+#box {
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+	display: none;
+	position: relative;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reactionContainer {
+	height: 70vh;
+	width: 100%;
+	position: relative;
+}

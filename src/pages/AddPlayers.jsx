@@ -104,7 +104,7 @@ export default function AddPlayers() {
 						image={user.image}
 					/>
 				))}
-				<button onClick={openDialog} className='addButton'>
+				<button type='button' onClick={openDialog} className='addButton'>
 					<img src={plus} alt='plus' />
 				</button>
 			</div>
@@ -126,9 +126,9 @@ export default function AddPlayers() {
 							type='text'
 							placeholder='Name'
 							id='playerName'
-							required
 							maxLength={12}
 							autoComplete='off'
+							required
 						/>
 						<small>(Max 12 characters)</small>
 						<label htmlFor='uploadPhoto'>Add a picture:</label>
@@ -148,7 +148,7 @@ export default function AddPlayers() {
 							)}
 						</div>
 						<button type='submit' className='dialogBtn'>
-							Add
+							<Button classes={"fitWidth"} text={"Add"} />
 						</button>
 					</form>
 				</div>
