@@ -2,17 +2,9 @@
 	width: 100%;
 	max-width: 300px;
 	margin: 0 auto;
-	padding: 50px 0;
+	padding: 30px 0 50px 0;
 	display: block;
 	box-sizing: border-box;
-}
-
-#homeCog {
-	position: absolute;
-	right: var(--margin);
-	top: var(--margin);
-	width: 30px;
-	cursor: pointer;
 }
 
 .homeContent {

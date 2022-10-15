@@ -1,11 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import close from "../assets/close.svg";
 
-export default function Dialog({ id, isOpen, dialogContent, closeClick }) {
+export default function Dialog({
+	id,
+	isOpen,
+	dialogContent,
+	closeClick,
+	bgClick,
+}) {
 	const diaRef = useRef(null);
 
 	useEffect(() => {
 		const dialog = diaRef.current;
+		console.log(diaRef);
 		if (isOpen) {
 			dialog.close();
 			dialog.showModal();
@@ -16,14 +23,13 @@ export default function Dialog({ id, isOpen, dialogContent, closeClick }) {
 
 	function handleClick(e) {
 		/* const dialog = diaRef.current;
-		let closeBtn = dialog.querySelector(".dialogClose");
 		let rect = dialog.getBoundingClientRect();
 		let isInDialog =
 			rect.top <= e.clientY &&
 			e.clientY <= rect.top + rect.height &&
 			rect.left <= e.clientX &&
 			e.clientX <= rect.left + rect.width;
-		if (!isInDialog || e.target === closeBtn) {
+		if (!isInDialog) {
 			dialog.close();
 		} */
 	}

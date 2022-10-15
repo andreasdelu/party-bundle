@@ -3,9 +3,11 @@ import Button from "../Button";
 import "../../styles/Drawing.css";
 import Player from "../Player";
 import Dialog from "../Dialog";
+import backspace from "../../assets/backspace.svg";
 
 export default function Pictionary() {
 	const canvasRef = useRef(null);
+	const canvasContainer = useRef(null);
 
 	const [turn, setTurn] = useState(0);
 	const [players, setPlayers] = useState([]);
@@ -14,15 +16,44 @@ export default function Pictionary() {
 	const [guessDialog, setGuessDialog] = useState(false);
 	const [turnDialog, setTurnDialog] = useState(true);
 
+	const [words, setWords] = useState([]);
+	const [currentWord, setCurrentWord] = useState("Harsk");
+
+	const defaultWidth = 6;
+	const defaultColor = "#000000";
+	const [penWidth, setPenWidth] = useState(defaultWidth);
+	const [penColor, setPenColor] = useState(defaultColor);
+
+	const [bgs, setBgs] = useState([]);
+
 	useEffect(() => {
 		canvasRef.current.width = window.innerWidth - 40;
-		canvasRef.current.height = window.innerWidth - 40;
-		const ctx = canvasRef.current.getContext("2d");
-		ctx.fillStyle = "white";
-		ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.width);
+		canvasRef.current.height = canvasRef.current.width;
 
 		setPlayers(JSON.parse(sessionStorage.getItem("players")));
+
+		async function fetchWords() {
+			const url =
+				"https://party-bundle-default-rtdb.europe-west1.firebasedatabase.app/pictionary/en.json";
+			const res = await fetch(url);
+			const data = await res.json();
+			setWords(data);
+		}
+
+		fetchWords();
 	}, []);
+
+	useEffect(() => {
+		let rnd = Math.floor(Math.random() * words.length);
+		setCurrentWord(words[rnd]);
+	}, [words]);
+
+	useEffect(() => {}, [bgs]);
+
+	function setGuessWord() {
+		let rnd = Math.floor(Math.random() * words.length);
+		setCurrentWord(words[rnd]);
+	}
 
 	function handleGuess(e) {
 		e.preventDefault();
@@ -38,6 +69,10 @@ export default function Pictionary() {
 		if (turnDialog) {
 			setTurnDialog(false);
 		}
+		setGuessWord();
+		setBgs([]);
+		setPenColor(defaultColor);
+		setPenWidth(defaultWidth);
 		setTurnDialog(true);
 	}
 
@@ -52,14 +87,112 @@ export default function Pictionary() {
 		}
 	}
 
+	let points = [];
+
+	function canvasLoad() {
+		const canvas = canvasRef.current;
+		const ctx = canvas.getContext("2d");
+		if (!points.length) return;
+		points.forEach((point, i) => {
+			if (points.length > 1) {
+				if (i === 0) {
+					ctx.beginPath();
+					ctx.moveTo(points[i + 1].x, points[i + 1].y);
+					ctx.lineTo(point.x, point.y);
+				} else {
+					ctx.beginPath();
+					ctx.moveTo(points[i - 1].x, points[i - 1].y);
+					ctx.lineTo(point.x, point.y);
+				}
+			} else {
+				ctx.beginPath();
+				ctx.moveTo(points.x, points.y);
+				ctx.lineTo(point.x, point.y);
+			}
+			ctx.lineCap = "round";
+			ctx.lineJoin = "round";
+			ctx.lineWidth = point.w;
+			ctx.strokeStyle = point.col;
+			ctx.stroke();
+		});
+	}
+
+	function drawLine(e) {
+		const canvas = canvasContainer.current;
+		const x = e.targetTouches[0].clientX;
+		const y = e.targetTouches[0].clientY;
+
+		points.push({
+			x: Math.floor(x - canvas.offsetLeft),
+			y: Math.floor(y - canvas.offsetTop),
+			w: penWidth,
+			col: penColor,
+		});
+
+		canvasLoad();
+	}
+
+	function back() {
+		if (bgs.length > 1) {
+			setBgs(bgs.slice(0, -1));
+		} else {
+			setBgs([]);
+		}
+	}
+
+	function handleTouchEnd() {
+		console.log(points);
+		points = [];
+		const canvas = canvasRef.current;
+		const ctx = canvas.getContext("2d");
+		setBgs(bgs.concat(canvas.toDataURL()));
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	}
+
 	return (
 		<>
 			<h1 className='gameTitle'>Drawing</h1>
-			<canvas ref={canvasRef} id='drawingCanvas'></canvas>
-			{/* <small
-				style={{ textAlign: "center", margin: "8px auto", display: "block" }}>
-				Players: {players.length}
-			</small> */}
+			<div ref={canvasContainer} className='canvasContainer'>
+				<div className='canvasBG'></div>
+				{bgs.map((bg, i) => (
+					<img key={i} className='canvasFrame' src={bg} alt='bg' />
+				))}
+				<canvas
+					onTouchMove={drawLine}
+					onTouchStart={drawLine}
+					onTouchEnd={() => handleTouchEnd()}
+					ref={canvasRef}
+					id='drawingCanvas'></canvas>
+			</div>
+			<div className='penSettings'>
+				<img onClick={back} id='retry' src={backspace} alt='' />
+				<div className='penColor'>
+					<small>Color:</small>
+					<input
+						value={penColor}
+						onChange={(e) => setPenColor(e.target.value)}
+						type='color'
+						name='penColor'
+						id='penColor'
+					/>
+				</div>
+				<div className='penSize'>
+					<small>
+						Size: <b>{penWidth} px</b>
+					</small>
+					<div className='psContainer'>
+						<input
+							value={penWidth}
+							onChange={(e) => setPenWidth(e.target.value)}
+							min={4}
+							max={40}
+							type='range'
+							name='penWidth'
+							id='penWidth'
+						/>
+					</div>
+				</div>
+			</div>
 			<div className='drawer'>
 				{players.length && (
 					<p style={{ margin: 0 }} className='bodyText'>
@@ -68,7 +201,7 @@ export default function Pictionary() {
 				)}
 			</div>
 			<div className='wordContainer'>
-				<p className='drawWord'>"Harsk"</p>
+				<p className='drawWord'>"{currentWord}"</p>
 				{!show && (
 					<div onClick={showWord} className='wordHide'>
 						Show Word

@@ -84,7 +84,7 @@ export default function ReactionGame({ diff }) {
 			<dialog ref={diaRef}>
 				<h1 id='overskrift'>You're fast!</h1>
 				<p id='printReactionTime'></p>
-				<div id='container'>
+				<div id='container-reaction'>
 					<Button onClick={handleClickDiaBtn} text={"Try again"} />
 				</div>
 			</dialog>

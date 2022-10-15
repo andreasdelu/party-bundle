@@ -61,6 +61,7 @@
 	pointer-events: none;
 	user-select: none;
 	overflow: hidden;
+	position: relative;
 }
 .buttonDisabled::after {
 	content: "";

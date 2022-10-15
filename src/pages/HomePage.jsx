@@ -2,17 +2,17 @@ import React from "react";
 import "../styles/HomePage.css";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
-import cog from "../assets/gear.svg";
 import cards from "../assets/cards.svg";
 import social from "../assets/social.svg";
 import dice from "../assets/dice.svg";
 import controller from "../assets/controller.svg";
 import ButtonBig from "../components/ButtonBig";
+import Header from "../components/Header";
 export default function HomePage() {
 	return (
 		<>
+			<Header onlySettings={true} />
 			<img id='homeLogo' src={logo} alt='' />
-			<img id='homeCog' src={cog} alt='' />
 			<p className='bodyText'>Choose a game type:</p>
 			<div className='homeContent'>
 				<Link className='buttonLink' to={"/cards"}>
