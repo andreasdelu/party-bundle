@@ -12,25 +12,28 @@ import dice6 from "../../assets/terninger/dice-six.svg";
 import diceHidden from "../../assets/terninger/dice-spgs.svg";
 
 export default function Meyer({ diff }) {
-	const [terning1, setTerning1] = useState(diceHidden);
-	const [terning2, setTerning2] = useState(diceHidden);
+	const [terning1, setTerning1] = useState(dice1);
+	const [terning2, setTerning2] = useState(dice2);
+	const [hidden, setHidden] = useState(true);
 	const [value, setValue] = useState("Roll the dice!");
 	const [newGame, setNewGame] = useState(true);
 	const [haveRolled, setHaveRolled] = useState(false);
 	const [nextPlayer, setNextPLayer] = useState(false);
 	const [lift, setLift] = useState(false);
 	const [above, setAbove] = useState(false);
+	const [itOrOver, setItOrOver] = useState(false);
+	const [cheers, setCheers] = useState(false);
 	const [count, setCount] = useState(1);
 	let terninger = [dice1, dice2, dice3, dice4, dice5, dice6];
 
 	function rollDice() {
+		setHidden(false);
+
 		if (count >= 2) {
 			setAbove(true);
 		} else {
 			setAbove(false);
 		}
-
-		console.log(count);
 
 		let rnd = Math.floor(Math.random() * 6);
 		let rnd2 = Math.floor(Math.random() * 6);
@@ -44,6 +47,7 @@ export default function Meyer({ diff }) {
 		} else if (rnd === rnd2) {
 			setValue(`Par ${rnd + 1}`);
 		}
+
 		if ((rnd + 1) * 10 + rnd2 + 1 === 21 || (rnd2 + 1) * 10 + rnd + 1 === 21) {
 			setValue("Meyer!");
 		}
@@ -52,12 +56,17 @@ export default function Meyer({ diff }) {
 		}
 		if ((rnd + 1) * 10 + rnd2 + 1 === 32 || (rnd2 + 1) * 10 + rnd + 1 === 32) {
 			setValue("Cheers!");
+			setCheers(true);
+			setHaveRolled(false);
+
+			return;
 		}
 
 		setNewGame(false);
 		setHaveRolled(true);
 		setNextPLayer(false);
 		setLift(false);
+		setItOrOver(false);
 	}
 
 	function next() {
@@ -66,11 +75,12 @@ export default function Meyer({ diff }) {
 		setNextPLayer(true);
 		setLift(false);
 		setAbove(false);
+		setItOrOver(false);
+		setCheers(false);
 
-		setTerning1(diceHidden);
-		setTerning2(diceHidden);
+		setHidden(true);
 
-		setValue("Kurt's tur");
+		setValue("Next player");
 	}
 
 	function liftCup() {
@@ -79,14 +89,40 @@ export default function Meyer({ diff }) {
 		setNextPLayer(false);
 		setLift(true);
 		setAbove(false);
+		setItOrOver(false);
+		setCheers(false);
+
+		setHidden(false);
+		setValue("Cups liftet");
 	}
 
-	function itOrAbove() {
+	function itOver() {
 		setNewGame(false);
 		setHaveRolled(false);
 		setNextPLayer(false);
 		setLift(false);
-		setAbove(true);
+		setAbove(false);
+		setCheers(false);
+		setItOrOver(true);
+		rollDice();
+		next();
+
+		setHidden(true);
+
+		setValue("It or above");
+	}
+
+	function newGameAgain() {
+		setNewGame(false);
+		setHaveRolled(false);
+		setNextPLayer(false);
+		setLift(false);
+		setAbove(false);
+		setItOrOver(false);
+		setCheers(false);
+		setNewGame(true);
+		setCount(1);
+		setHidden(true);
 	}
 
 	return (
@@ -94,74 +130,128 @@ export default function Meyer({ diff }) {
 			<div className='game__container'>
 				<h1 className='gameTitle'>Meyer</h1>
 				<div className='terninger'>
-					<img className='dice' src={terning1} alt='terning' />
-					<img className='dice' src={terning2} alt='terning' />
+					<div className='diceCont'>
+						<img className='dice' src={terning1} alt='terning' />
+						{hidden && (
+							<>
+								<img
+									className='dice hiddenDice'
+									src={diceHidden}
+									alt='terning'
+								/>
+							</>
+						)}
+					</div>
+					<div className='diceCont'>
+						<img className='dice' src={terning2} alt='terning' />
+						{hidden && (
+							<>
+								<img
+									className='dice hiddenDice'
+									src={diceHidden}
+									alt='terning'
+								/>
+							</>
+						)}
+					</div>
 				</div>
-				<div className='buttons'>
-					<h2>{value}</h2>
+				{!cheers ? (
+					<div className='buttons'>
+						<h2>{value}</h2>
 
-					{newGame && (
+						{newGame && (
+							<>
+								<Button
+									class='roll'
+									onClick={() => {
+										setCount(count + 1);
+										rollDice();
+									}}
+									text={"Roll!"}
+								/>
+
+								<Button
+									classes={"buttonDisabled"}
+									onClick={next}
+									text={"Next player"}
+								/>
+							</>
+						)}
+
+						{haveRolled && (
+							<>
+								<Button
+									onClick={() => {
+										setCount(count + 1);
+										rollDice();
+									}}
+									classes={"buttonDisabled"}
+									text={"Roll!"}
+								/>
+								<Button onClick={next} text={"Next player"} />
+							</>
+						)}
+
+						{nextPlayer && (
+							<>
+								<Button onClick={rollDice} text={"Roll!"} />
+								<Button onClick={liftCup} text={"Lift"} />
+								<Button classes={"buttonDisabled"} text={"It og above"} />
+							</>
+						)}
+
+						{lift && (
+							<>
+								<Button
+									onClick={() => {
+										newGameAgain();
+									}}
+									text={"New game"}
+								/>
+
+								<Button classes={"buttonDisabled"} text={"Lift"} />
+
+								<Button classes={"buttonDisabled"} text={"It og above"} />
+							</>
+						)}
+
+						{above && (
+							<>
+								<Button onClick={itOver} text={"It og above"} />
+							</>
+						)}
+
+						{itOrOver && (
+							<>
+								<Button
+									onClick={() => {
+										setCount(count + 1);
+										rollDice();
+									}}
+									text={"Roll!"}
+								/>
+								<Button onClick={liftCup} text={"Lift"} />
+								<Button
+									classes={"buttonDisabled"}
+									onClick={itOver}
+									text={"It og above"}
+								/>
+							</>
+						)}
+					</div>
+				) : (
+					<div className='buttons'>
+						<h2>{value}</h2>
 						<>
 							<Button
 								onClick={() => {
-									setCount(count + 1);
-									rollDice();
+									newGameAgain();
 								}}
-								text={"Roll!"}
+								text={"New game"}
 							/>
-							<Button onClick={nextPlayer} text={"Next player"} />
 						</>
-					)}
-
-					{haveRolled && (
-						<>
-							<Button
-								onClick={() => {
-									setCount(count + 1);
-									rollDice();
-								}}
-								classes={"buttonDisabled"}
-								text={"Roll!"}
-							/>
-							<Button onClick={next} text={"Next player"} />
-						</>
-					)}
-
-					{nextPlayer && (
-						<>
-							<Button
-								onClick={() => {
-									setCount(count + 1);
-									rollDice();
-								}}
-								text={"Roll!"}
-							/>
-							<Button onClick={liftCup} text={"Lift"} />
-							<Button classes={"buttonDisabled"} text={"It og above"} />
-						</>
-					)}
-
-					{lift && (
-						<>
-							<Button
-								onClick={() => {
-									setCount(count + 1);
-									rollDice();
-								}}
-								classes={"buttonDisabled"}
-								text={"Roll!"}
-							/>
-							<Button onClick={next} text={"Next player"} />
-							<Button onClick={next} text={"It og above"} />
-						</>
-					)}
-
-					{above && (
-						<>
-							<Button onClick={itOrAbove} text={"It og above"} />
-						</>
-					)}
-				</div>
+					</div>
+				)}
 			</div>
 		</>
 	);

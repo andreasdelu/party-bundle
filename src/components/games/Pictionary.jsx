@@ -141,7 +141,6 @@ export default function Pictionary() {
 	}
 
 	function handleTouchEnd() {
-		console.log(points);
 		points = [];
 		const canvas = canvasRef.current;
 		const ctx = canvas.getContext("2d");
@@ -165,9 +164,11 @@ export default function Pictionary() {
 					id='drawingCanvas'></canvas>
 			</div>
 			<div className='penSettings'>
-				<img onClick={back} id='retry' src={backspace} alt='' />
+				<div className='backContainer'>
+					<img onClick={back} id='retry' src={backspace} alt='' />
+					<small>Undo</small>
+				</div>
 				<div className='penColor'>
-					<small>Color:</small>
 					<input
 						value={penColor}
 						onChange={(e) => setPenColor(e.target.value)}
@@ -175,11 +176,9 @@ export default function Pictionary() {
 						name='penColor'
 						id='penColor'
 					/>
+					<small>Color</small>
 				</div>
 				<div className='penSize'>
-					<small>
-						Size: <b>{penWidth} px</b>
-					</small>
 					<div className='psContainer'>
 						<input
 							value={penWidth}
@@ -191,6 +190,7 @@ export default function Pictionary() {
 							id='penWidth'
 						/>
 					</div>
+					<small>Size: {penWidth} px</small>
 				</div>
 			</div>
 			<div className='drawer'>

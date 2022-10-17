@@ -5,6 +5,16 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.137);
 }
 
+.diceCont {
+	position: relative;
+}
+
+.hiddenDice {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
 .terninger {
 	display: flex;
 	justify-content: center;

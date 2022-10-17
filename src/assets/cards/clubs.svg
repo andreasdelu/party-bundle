@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Clubs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+	<defs>
+		<style>
+			.cls-1{fill:#000;}
+		</style>
+	</defs>
+	<path class="cls-1" d="M26.39,45h-2.74c-.39,0-.69-.35-.61-.74,.18-.86,.32-1.83,.38-2.9,.14-2.44-.18-4.51-.55-6.03h4.25c-.35,1.89-.58,4.24-.36,6.91,.06,.71,.14,1.39,.24,2.03,.06,.38-.23,.72-.61,.72Z" />
+	<g>
+		<circle class="cls-1" cx="25.22" cy="16.39" r="11.39" />
+		<circle class="cls-1" cx="13.84" cy="32.3" r="11.39" />
+		<circle class="cls-1" cx="36.61" cy="32.3" r="11.39" />
+		<rect class="cls-1" x="17.39" y="23.67" width="14.98" height="14.02" />
+	</g>
+</svg>

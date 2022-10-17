@@ -1,18 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import close from "../assets/close.svg";
 
-export default function Dialog({
-	id,
-	isOpen,
-	dialogContent,
-	closeClick,
-	bgClick,
-}) {
+export default function Dialog({ id, isOpen, dialogContent, closeClick }) {
 	const diaRef = useRef(null);
 
 	useEffect(() => {
 		const dialog = diaRef.current;
-		console.log(diaRef);
 		if (isOpen) {
 			dialog.close();
 			dialog.showModal();
@@ -37,12 +30,14 @@ export default function Dialog({
 	return (
 		<>
 			<dialog onClick={handleClick} ref={diaRef} id={id}>
-				<img
-					onClick={closeClick}
-					className='dialogClose'
-					src={close}
-					alt='close'
-				/>
+				{closeClick && (
+					<img
+						onClick={closeClick}
+						className='dialogClose'
+						src={close}
+						alt='close'
+					/>
+				)}
 				{dialogContent}
 			</dialog>
 		</>

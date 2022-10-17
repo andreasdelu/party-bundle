@@ -98,3 +98,9 @@
 	background-color: #3d51ff;
 	border-radius: 10px;
 }
+
+.menuButtonDisabled {
+	user-select: none;
+	pointer-events: none;
+	opacity: 0.4;
+}

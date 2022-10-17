@@ -73,6 +73,9 @@ dialog {
 #statisticsDialog {
 	background: linear-gradient(#ff48a4, #ff107e) !important;
 }
+#rulesDialog {
+	background: linear-gradient(#2ba437, #16df45) !important;
+}
 
 dialog::backdrop {
 	/* cursor: pointer; */
@@ -186,4 +189,33 @@ input[type="text"]:focus {
 	flex-direction: column;
 	align-items: center;
 	gap: var(--margin);
+}
+
+.dialogRules {
+	text-align: left;
+	padding: 20px;
+	max-height: 60vh;
+	overflow-y: scroll;
+}
+
+.dialogRules > * {
+	text-align: left;
+}
+
+.dialogRules ul {
+	text-align: left;
+	margin: 0;
+}
+
+.dialogRules h4 {
+	font-size: 20px;
+}
+
+.dialogRules h5 {
+	font-size: 16px;
+}
+
+.dialogRules p {
+	font-size: 16px;
+	padding: 0;
 }

@@ -7,6 +7,19 @@
 	margin-right: auto;
 }
 
+.gameContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: calc(100vh - 100px);
+}
+
 .gameTitle {
 	margin-top: 0;
+}
+
+.overunderButtons {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
