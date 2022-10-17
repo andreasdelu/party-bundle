@@ -32,8 +32,16 @@ export default function OverUnder() {
 			setTimeout(() => {
 				if (cardValue2 >= prevValue) {
 					setWins(wins + 1);
+					setFlipped("winCard");
+					setTimeout(() => {
+						setFlipped("");
+					}, 400);
 				} else {
 					setWins(0);
+					setFlipped("loseCard");
+					setTimeout(() => {
+						setFlipped("");
+					}, 400);
 				}
 			}, 300);
 		}, 500);
@@ -47,8 +55,16 @@ export default function OverUnder() {
 			setTimeout(() => {
 				if (cardValue2 <= prevValue) {
 					setWins(wins + 1);
+					setFlipped("winCard");
+					setTimeout(() => {
+						setFlipped("");
+					}, 400);
 				} else {
 					setWins(0);
+					setFlipped("loseCard");
+					setTimeout(() => {
+						setFlipped("");
+					}, 400);
 				}
 			}, 500);
 		}, 500);
@@ -59,7 +75,10 @@ export default function OverUnder() {
 			<div className='gameContainer'>
 				<h1 className='gameTitle'>Over/Under</h1>
 				<Card extraClasses={flipped} suit={cardSuit} value={cardValue} />
-				<p>Wins: {wins}</p>
+				<p>
+					Wins: {wins}
+					{wins > 5 && "🔥"}
+				</p>
 				<div className='overunderButtons'>
 					<Button onClick={over} text={"Over"} />
 					<Button onClick={under} text={"Under"} />
