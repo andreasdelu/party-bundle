@@ -12,6 +12,14 @@ import MiniGames from "./pages/MiniGames";
 import ErrorPage from "./pages/ErrorPage";
 import CardGames from "./pages/CardGames";
 import SocialGames from "./pages/SocialGames";
+import { saveTimeTotal, saveTimeSession } from "./modules/Save";
+
+setInterval(() => {
+	saveTimeTotal();
+	saveTimeSession();
+}, 60000);
+saveTimeTotal();
+saveTimeSession();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

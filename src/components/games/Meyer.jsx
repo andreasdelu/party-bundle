@@ -24,10 +24,12 @@ export default function Meyer({ diff }) {
 	const [itOrOver, setItOrOver] = useState(false);
 	const [cheers, setCheers] = useState(false);
 	const [count, setCount] = useState(1);
+	const [shake, setShake] = useState("");
 	let terninger = [dice1, dice2, dice3, dice4, dice5, dice6];
 
 	function rollDice() {
-		setHidden(false);
+		resetAll();
+		animate();
 
 		if (count >= 2) {
 			setAbove(true);
@@ -55,81 +57,71 @@ export default function Meyer({ diff }) {
 			setValue("Little Meyer!");
 		}
 		if ((rnd + 1) * 10 + rnd2 + 1 === 32 || (rnd2 + 1) * 10 + rnd + 1 === 32) {
-			setValue("Cheers!");
 			setCheers(true);
+			setValue("Cheers!");
 			setHaveRolled(false);
+			setHidden(false);
 
 			return;
 		}
 
-		setNewGame(false);
 		setHaveRolled(true);
-		setNextPLayer(false);
-		setLift(false);
-		setItOrOver(false);
+		setHidden(false);
 	}
 
-	function next() {
+	function resetAll() {
 		setNewGame(false);
 		setHaveRolled(false);
-		setNextPLayer(true);
+		setNextPLayer(false);
 		setLift(false);
 		setAbove(false);
 		setItOrOver(false);
 		setCheers(false);
+		setNewGame(false);
+	}
 
+	function next() {
+		resetAll();
+		setNextPLayer(true);
 		setHidden(true);
-
 		setValue("Next player");
 	}
 
 	function liftCup() {
-		setNewGame(false);
-		setHaveRolled(false);
-		setNextPLayer(false);
+		resetAll();
 		setLift(true);
-		setAbove(false);
-		setItOrOver(false);
-		setCheers(false);
-
-		setHidden(false);
 		setValue("Cups liftet");
+		setHidden(false);
 	}
 
 	function itOver() {
-		setNewGame(false);
-		setHaveRolled(false);
-		setNextPLayer(false);
-		setLift(false);
-		setAbove(false);
-		setCheers(false);
+		resetAll();
 		setItOrOver(true);
 		rollDice();
 		next();
-
-		setHidden(true);
-
 		setValue("It or above");
 	}
 
 	function newGameAgain() {
-		setNewGame(false);
-		setHaveRolled(false);
-		setNextPLayer(false);
-		setLift(false);
-		setAbove(false);
-		setItOrOver(false);
-		setCheers(false);
+		resetAll();
 		setNewGame(true);
 		setCount(1);
 		setHidden(true);
+	}
+
+	function animate() {
+		setShake("shake");
+
+		setTimeout(() => {
+			setShake("");
+		}, 400);
 	}
 
 	return (
 		<>
 			<div className='game__container'>
 				<h1 className='gameTitle'>Meyer</h1>
-				<div className='terninger'>
+				<div className={"terninger " + shake}>
 					<div className='diceCont'>
 						<img className='dice' src={terning1} alt='terning' />
 						{hidden && (

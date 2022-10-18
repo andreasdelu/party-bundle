@@ -73,6 +73,10 @@
 	left: 0;
 	opacity: 0.5;
 }
+.buttonDisabled:hover {
+	scale: 1;
+	box-shadow: 0 0 0px transparent;
+}
 
 .centerAbsolute {
 	position: absolute;

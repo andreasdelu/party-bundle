@@ -16,6 +16,9 @@ export default function SocialGames() {
 				<Link className='buttonLink' to={"/game/pictionary/players"}>
 					<Button text={"Pictionary"} />
 				</Link>
+				<Link className='buttonLink' to={"/game/spin/players"}>
+					<Button text={"Spin The Bottle"} />
+				</Link>
 			</div>
 		</>
 	);

@@ -10,11 +10,12 @@
 }
 
 body {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	background: linear-gradient(#7685ff, #acdfff);
 	height: fit-content;
 	overflow-x: hidden;
+	max-width: 400px;
 }
 
 #root {
@@ -74,7 +75,7 @@ dialog {
 	background: linear-gradient(#ff48a4, #ff107e) !important;
 }
 #rulesDialog {
-	background: linear-gradient(#2ba437, #16df45) !important;
+	background: linear-gradient(#ffbb4e, #ff9428) !important;
 }
 
 dialog::backdrop {

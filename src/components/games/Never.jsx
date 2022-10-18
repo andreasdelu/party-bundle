@@ -53,7 +53,6 @@ export default function Never() {
 		if (!filteredQuestions.length) {
 			filteredQuestions = allQuestions;
 		}
-		console.log(filteredQuestions.length);
 		const rnd = Math.floor(Math.random() * filteredQuestions.length);
 		const q = filteredQuestions[rnd];
 		filteredQuestions = filteredQuestions.filter((question, i) => i !== rnd);
@@ -64,10 +63,10 @@ export default function Never() {
 		<>
 			<h1 className='gameTitle'>Never Have I Ever</h1>
 			<div ref={stackRef} className='stack'>
-				<div className='card'>1</div>
-				<div className='card'>2</div>
-				<div className='card'>3</div>
-				<div className='card'>4</div>
+				<div className='card'>Loading...</div>
+				<div className='card'>Loading...</div>
+				<div className='card'>Loading...</div>
+				<div className='card'>Loading...</div>
 			</div>
 		</>
 	);

@@ -6,11 +6,11 @@ import ReactionGame from "../components/games/ReactionGame";
 import Never from "../components/games/Never";
 import Pictionary from "../components/games/Pictionary";
 import OverUnder from "../components/games/OverUnder";
+import SpinTheBottle from "../components/games/SpinTheBottle";
 
 export default function Game() {
 	const { game, diff } = useParams();
 	const [difficulty, setDifficulty] = useState("");
-	const [currentRule, setCurrentRule] = useState("");
 
 	useEffect(() => {
 		setDifficulty(diff.split("-")[1]);
@@ -124,14 +124,13 @@ export default function Game() {
 			),
 		},
 	];
-
-	useEffect(() => {
-		rules.forEach((rule) => {
-			if (rule.name === game) {
-				setCurrentRule(rule);
+	const [currentRule] = useState(() => {
+		for (let i = 0; i < rules.length; i++) {
+			if (rules[i].name === game) {
+				return rules[i];
 			}
-		});
-	}, []);
+		}
+	});
 
 	return (
 		<>
@@ -141,6 +140,7 @@ export default function Game() {
 			{game === "pictionary" && <Pictionary diff={difficulty} />}
 			{game === "never" && <Never diff={difficulty} />}
 			{game === "overunder" && <OverUnder diff={difficulty} />}
+			{game === "spin" && <SpinTheBottle diff={difficulty} />}
 		</>
 	);
 }

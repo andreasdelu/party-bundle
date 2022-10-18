@@ -19,6 +19,19 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 	const [rulesDialog, setRulesDialog] = useState(false);
 	const [aboutDialog, setAboutDialog] = useState(false);
 
+	const [statsLocal, setStatsLocal] = useState(
+		JSON.parse(localStorage.getItem("stats"))
+	);
+	const [statsSession, setStatsSession] = useState(
+		JSON.parse(sessionStorage.getItem("stats"))
+	);
+
+	function convertTime(minutes) {
+		let hour = Math.floor(minutes / 60);
+		let minute = Math.floor(minutes) % 60;
+		return `${hour}h ${minute}m`;
+	}
+
 	const menuRef = useRef(null);
 
 	if (onlySettings === undefined) {
@@ -58,7 +71,13 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 						<img src={gear} alt='gear' />
 						Settings
 					</div>
-					<div onClick={() => setStatisticsDialog(true)} className='menuButton'>
+					<div
+						onClick={() => {
+							setStatisticsDialog(true);
+							setStatsLocal(JSON.parse(localStorage.getItem("stats")));
+							setStatsSession(JSON.parse(sessionStorage.getItem("stats")));
+						}}
+						className='menuButton'>
 						<img src={stats} alt='stats' />
 						Statistics
 					</div>
@@ -103,6 +122,20 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 				dialogContent={
 					<div className='dialogContainer'>
 						<h2>Statistics</h2>
+						<div className='statsTime'>
+							<h3>Time played:</h3>
+							<p>
+								Session:
+								<br />
+								<small>{convertTime(statsSession.timePlayed.minutes)}</small>
+							</p>
+							<p>
+								All-time:
+								<br />
+								<small>{convertTime(statsLocal.timePlayed.minutes)}</small>
+							</p>
+						</div>
+						<p></p>
 					</div>
 				}
 			/>

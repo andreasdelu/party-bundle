@@ -129,7 +129,7 @@ export default function Pictionary() {
 			col: penColor,
 		});
 
-		canvasLoad();
+		requestAnimationFrame(canvasLoad);
 	}
 
 	function back() {

@@ -18,10 +18,20 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.135);
 	transition: transform 0.5s, outline 0.3s ease;
 	outline: 0px solid transparent;
+	animation: start 0.5s 0s ease;
+}
+
+@keyframes start {
+	from {
+		transform: rotateY(180deg);
+	}
+	to {
+		transform: rotateY(0deg);
+	}
 }
 
 .winCard {
-	outline: 5px solid rgb(82, 255, 47);
+	outline: 5px solid rgb(18, 242, 48);
 }
 .loseCard {
 	outline: 5px solid rgb(255, 47, 47);
@@ -98,6 +108,9 @@
 .playingCardValue {
 	font-weight: 900;
 	font-size: 1.5rem;
+	padding: 0;
+	margin: 0;
+	width: 2ch;
 }
 
 .playingCardSuit {
