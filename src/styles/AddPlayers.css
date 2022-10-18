@@ -1,3 +1,9 @@
+.addPlayersWrap {
+	height: calc(100vh - 100px);
+	width: 100vw;
+	position: relative;
+}
+
 .playerContainer {
 	max-width: fit-content;
 	display: grid;
@@ -5,7 +11,11 @@
 	grid-auto-rows: auto;
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
-	margin: 0 auto 80px auto;
+	margin: 0 auto 20px auto;
+	max-height: calc(100% - 250px);
+	overflow-y: scroll;
+	overflow-x: hidden;
+	position: relative;
 }
 
 .playerContainer > div:only-of-type {
@@ -26,6 +36,11 @@
 	justify-content: center;
 	cursor: pointer;
 	grid-column: span 2;
+	margin: 0 auto;
+}
+
+.addButton:focus {
+	outline: none;
 }
 
 .addButton img {

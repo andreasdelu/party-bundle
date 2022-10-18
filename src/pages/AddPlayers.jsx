@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import "../styles/AddPlayers.css";
 import plus from "../assets/plus.svg";
 import close from "../assets/close.svg";
@@ -10,7 +10,11 @@ import Player from "../components/Player";
 
 export default function AddPlayers() {
 	const [userImage, setUserImage] = useState("");
-	const [userList, setUserList] = useState([]);
+	const [userList, setUserList] = useState(
+		JSON.parse(sessionStorage.getItem("players"))
+	);
+	const inputRef = useRef(null);
+	const formRef = useRef(null);
 
 	const { game } = useParams();
 
@@ -44,18 +48,23 @@ export default function AddPlayers() {
 
 	function addPlayer(e) {
 		e.preventDefault();
+		if (inputRef.current.value.length > 11) {
+			inputRef.current.value = inputRef.current.value.substring(0, 11);
+		}
 		let user = {
 			id: Date.now(),
-			name: e.target.name.value,
+			name: inputRef.current.value,
 			image: userImage,
 		};
 		let newList = [...userList, user];
 		setUserList(newList);
 		sessionStorage.setItem("players", JSON.stringify(newList));
-		document.getElementById("addPlayer").close();
 
-		e.target.reset();
+		formRef.current.reset();
 		setUserImage("");
+		document.getElementById("addPlayer").close();
+		const pCont = document.querySelector(".playerContainer");
+		pCont.scrollTop = pCont.scrollHeight;
 	}
 
 	function removePlayer(id) {
@@ -63,12 +72,6 @@ export default function AddPlayers() {
 		sessionStorage.setItem("players", JSON.stringify(newList));
 		setUserList(newList);
 	}
-
-	useEffect(() => {
-		if (sessionStorage.getItem("players")) {
-			setUserList(JSON.parse(sessionStorage.getItem("players")));
-		}
-	}, []);
 
 	function openDialog() {
 		const dialog = document.getElementById("addPlayer");
@@ -92,45 +95,52 @@ export default function AddPlayers() {
 	return (
 		<>
 			<Header />
-			<p className='bodyText'>Add players:</p>
-			<div className='playerContainer'>
-				{userList.map((user) => (
-					<Player
-						removable={true}
-						onClick={removePlayer}
-						key={user.id}
-						id={user.id}
-						name={user.name}
-						image={user.image}
-					/>
-				))}
-				<button type='button' onClick={openDialog} className='addButton'>
-					<img src={plus} alt='plus' />
-				</button>
+			<div className='addPlayersWrap'>
+				<p className='bodyText'>Add players:</p>
+				<div className='playerContainer'>
+					{userList.map((user) => (
+						<Player
+							removable={true}
+							onClick={removePlayer}
+							key={user.id}
+							id={user.id}
+							name={user.name}
+							image={user.image}
+						/>
+					))}
+				</div>
+				{userList.length <= 9 ? (
+					<button type='button' onClick={openDialog} className='addButton'>
+						<img src={plus} alt='plus' />
+					</button>
+				) : (
+					<p className='textBody'>Max players reached</p>
+				)}
+				{userList.length ? (
+					<Link className='buttonLink' to={`/game/${game}/difficulty/`}>
+						<Button classes={"buttonFixed"} text={"Next"} />
+					</Link>
+				) : (
+					<Button classes={"buttonFixed buttonDisabled"} text={"Next"} />
+				)}
 			</div>
-			{userList.length ? (
-				<Link className='buttonLink' to={`/game/${game}/difficulty/`}>
-					<Button classes={"buttonFixed"} text={"Next"} />
-				</Link>
-			) : (
-				<Button classes={"buttonFixed buttonDisabled"} text={"Next"} />
-			)}
 			<dialog id='addPlayer'>
 				<div className='dialogContainer'>
 					<img className='dialogClose' src={close} alt='' />
 					<h2>Add Player:</h2>
-					<form id='addForm' onSubmit={addPlayer}>
+					<form ref={formRef} id='addForm' onSubmit={addPlayer}>
 						<label htmlFor='playerName'>Enter player name:</label>
 						<input
+							ref={inputRef}
 							name='name'
 							type='text'
 							placeholder='Name'
 							id='playerName'
-							maxLength={12}
+							maxLength={11}
 							autoComplete='off'
 							required
 						/>
-						<small>(Max 12 characters)</small>
+						<small>(Max 11 characters)</small>
 						<label htmlFor='uploadPhoto'>Add a picture:</label>
 						<div className='uploadPhotoContainer'>
 							<input
@@ -147,7 +157,7 @@ export default function AddPlayers() {
 								<img src={userImage} alt='preview' id='imagePreview' />
 							)}
 						</div>
-						<button type='submit' className='dialogBtn'>
+						<button onClick={addPlayer} type='button' className='dialogBtn'>
 							<Button classes={"fitWidth"} text={"Add"} />
 						</button>
 					</form>

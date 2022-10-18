@@ -11,6 +11,9 @@ import gear from "../assets/gear.svg";
 import stats from "../assets/stats.svg";
 import rules from "../assets/info.svg";
 import about from "../assets/question.svg";
+import twitter from "../assets/twitter.svg";
+import instagram from "../assets/instagram.svg";
+import facebook from "../assets/facebook.svg";
 import Dialog from "./Dialog";
 
 export default function Header({ onlySettings, showRules, ruleContent }) {
@@ -62,39 +65,63 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 						</Link>
 					</>
 				)}
-				<img onClick={openMenu} className='headerGear' src={menu} alt='cog' />
+				<img onClick={openMenu} className='headerMenu' src={menu} alt='cog' />
 			</header>
 			<div ref={menuRef} id='menu'>
-				<div onClick={closeMenu} className='menuBG'></div>
 				<div className='menuContainer'>
-					<div onClick={() => setSettingsDialog(true)} className='menuButton'>
-						<img src={gear} alt='gear' />
-						Settings
+					<img className='menuLogo' src={logo} alt='' />
+					<div className='menuButtons'>
+						<div
+							style={{ transitionDelay: "0.1s" }}
+							onClick={() => setSettingsDialog(true)}
+							className='menuButton swipeIn'>
+							<img src={gear} alt='gear' />
+							Settings
+						</div>
+						<div
+							style={{ transitionDelay: "0.2s" }}
+							onClick={() => {
+								setStatisticsDialog(true);
+								setStatsLocal(JSON.parse(localStorage.getItem("stats")));
+								setStatsSession(JSON.parse(sessionStorage.getItem("stats")));
+							}}
+							className='menuButton swipeIn'>
+							<img src={stats} alt='stats' />
+							Statistics
+						</div>
+						{showRules ? (
+							<div
+								style={{ transitionDelay: "0.3s" }}
+								onClick={() => setRulesDialog(true)}
+								className='menuButton swipeIn'>
+								<img src={rules} alt='rules' />
+								Rules
+							</div>
+						) : (
+							<div
+								style={{ transitionDelay: "0.3s" }}
+								className='menuButton swipeIn menuButtonDisabled'>
+								<img src={rules} alt='rules' />
+								Rules
+							</div>
+						)}
+						<div
+							style={{ transitionDelay: "0.4s" }}
+							onClick={() => setAboutDialog(true)}
+							className='menuButton swipeIn'>
+							<img src={about} alt='about' />
+							About
+						</div>
 					</div>
 					<div
-						onClick={() => {
-							setStatisticsDialog(true);
-							setStatsLocal(JSON.parse(localStorage.getItem("stats")));
-							setStatsSession(JSON.parse(sessionStorage.getItem("stats")));
-						}}
-						className='menuButton'>
-						<img src={stats} alt='stats' />
-						Statistics
-					</div>
-					{showRules ? (
-						<div onClick={() => setRulesDialog(true)} className='menuButton'>
-							<img src={rules} alt='rules' />
-							Rules
+						className='menuFooter swipeIn'
+						style={{ transitionDelay: "0.5s" }}>
+						<h3>Follow us!</h3>
+						<div className='someWrap'>
+							<img className='someIcon' src={facebook} alt='facebook' />
+							<img className='someIcon' src={instagram} alt='instagram' />
+							<img className='someIcon' src={twitter} alt='twitter' />
 						</div>
-					) : (
-						<div className='menuButton menuButtonDisabled'>
-							<img src={rules} alt='rules' />
-							Rules
-						</div>
-					)}
-					<div onClick={() => setAboutDialog(true)} className='menuButton'>
-						<img src={about} alt='about' />
-						About
 					</div>
 				</div>
 				<img

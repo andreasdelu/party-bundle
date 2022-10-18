@@ -1,12 +1,14 @@
 :root {
 	--margin: 20px;
 	font-family: articulat-cf, sans-serif;
+	overflow-x: hidden;
 }
 
 * {
 	font-family: articulat-cf, sans-serif;
 	text-size-adjust: none;
 	color: white;
+	-webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -14,8 +16,9 @@ body {
 	padding: 0;
 	background: linear-gradient(#7685ff, #acdfff);
 	height: fit-content;
-	overflow-x: hidden;
+	width: 100vw;
 	max-width: 400px;
+	overflow-x: hidden;
 }
 
 #root {

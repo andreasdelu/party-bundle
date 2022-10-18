@@ -35,3 +35,18 @@
 	transition-property: transform;
 	transition-duration: 2s;
 }
+
+.promptWrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 0 20px;
+}
+
+.promptWrap h2 {
+	margin-bottom: 0;
+}
+.promptWrap p {
+	margin-bottom: 0;
+}

@@ -9,6 +9,7 @@ export default function SpinTheBottle() {
 	const [players] = useState(JSON.parse(sessionStorage.getItem("players")));
 	const [chosenPlayer, setchosenPlayer] = useState(null);
 	const [spins, setSpins] = useState(3);
+	const [prevDegree, setPrevDegree] = useState(0);
 	const bottleRef = useRef(null);
 	const bottleRotations = [];
 	players.forEach((p, i) => {
@@ -24,8 +25,13 @@ export default function SpinTheBottle() {
 		});
 		setSpins(spins + 3);
 		const bottle = bottleRef.current;
-		const degree =
+		let degree =
 			bottleRotations[Math.floor(Math.random() * bottleRotations.length)];
+		if (degree === prevDegree) {
+			let altRotations = bottleRotations.filter((rot) => degree !== rot);
+			degree =
+				altRotations[Math.floor(Math.random() * bottleRotations.length - 1)];
+		}
 		const spinTo = 360 * spins + degree + "deg";
 		bottle.ontransitionend = () => {
 			const playerContainer = document.getElementById(`${degree}`);
@@ -36,6 +42,7 @@ export default function SpinTheBottle() {
 			setchosenPlayer(...player);
 		};
 		bottle.style.transform = `rotate(${spinTo})`;
+		setPrevDegree(degree);
 	}
 
 	return (
@@ -47,7 +54,7 @@ export default function SpinTheBottle() {
 						{players.map((player, index) => (
 							<div
 								data-playerid={player.id}
-								id={`${Math.floor((360 / players.length) * index)}`}
+								id={`${Math.floor(360 / players.length) * index}`}
 								key={index}
 								style={{
 									transform: `rotate(${Math.floor(
@@ -59,7 +66,7 @@ export default function SpinTheBottle() {
 									style={{
 										transform: `rotate(-${Math.floor(
 											(360 / players.length) * index
-										)}deg) scale(0.9)`,
+										)}deg) scale(${players.length >= 7 ? "0.75" : "0.9"})`,
 									}}
 									className='smallRotate'>
 									<Player
@@ -78,8 +85,16 @@ export default function SpinTheBottle() {
 							alt='bottle'
 						/>
 					</div>
-
-					<h2>{chosenPlayer && chosenPlayer.name}</h2>
+					{chosenPlayer && (
+						<div className='promptWrap'>
+							<h2>You're up {chosenPlayer.name}!</h2>
+							<p>
+								Look into the eyes of the person to your left, while you confess
+								your love to them. Make it heartfelt! Otherwise take
+								<b> 3 sips</b>
+							</p>
+						</div>
+					)}
 				</div>
 			</div>
 		</>
