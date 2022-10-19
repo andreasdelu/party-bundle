@@ -76,7 +76,11 @@ export default function OverUnder() {
 	function gameEnd() {
 		setButtons(false);
 		setScoreDialog(true);
-		saveStats("overunder", { name: "Over/Under", value: wins });
+		saveStats("overunder", {
+			name: "Over/Under",
+			value: wins,
+			valueName: "wins",
+		});
 	}
 
 	function newGame() {

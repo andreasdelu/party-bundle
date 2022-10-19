@@ -9,6 +9,19 @@
 	text-size-adjust: none;
 	color: white;
 	-webkit-tap-highlight-color: transparent;
+	line-height: 1.5rem;
+}
+
+*::-webkit-scrollbar-track {
+	background: #010000;
+}
+*::-webkit-scrollbar-thumb {
+	background: #ffacacca;
+	border-radius: 25px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: #ffacac5d;
 }
 
 body {
@@ -66,8 +79,8 @@ dialog {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
 	background: linear-gradient(#65b7fd, #3cacfd);
-	width: 100%;
-	padding: var(--margin);
+	width: calc(100% - 40px);
+	max-width: 450px;
 	box-sizing: border-box;
 }
 
@@ -91,6 +104,7 @@ dialog h2 {
 	color: white;
 	text-align: center;
 	margin: 0;
+	font-weight: 800;
 }
 
 .dialogContainer,
@@ -222,4 +236,37 @@ input[type="text"]:focus {
 .dialogRules p {
 	font-size: 16px;
 	padding: 0;
+}
+
+.statsTime {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.statsH3 {
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.timeSpent {
+	display: flex;
+	margin-top: 10px;
+}
+.hiScore {
+	margin-top: 10px;
+}
+.timeSpent p,
+.hiScore p {
+	margin: 0;
+	font-size: 1.05rem;
+}
+
+.hiScore p {
+	font-weight: 100;
+}
+
+.hiScore b {
+	margin-right: 10px;
+	font-weight: 300;
 }

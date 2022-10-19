@@ -150,17 +150,33 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 					<div className='dialogContainer'>
 						<h2>Statistics</h2>
 						<div className='statsTime'>
-							<h3>Time played:</h3>
-							<p>
-								Session:
-								<br />
-								<small>{convertTime(statsSession.timePlayed.minutes)}</small>
-							</p>
-							<p>
-								All-time:
-								<br />
-								<small>{convertTime(statsLocal.timePlayed.minutes)}</small>
-							</p>
+							<h3 className='statsH3'>Time played:</h3>
+							<div className='timeSpent'>
+								<p>
+									Session:
+									<br />
+									<small>{convertTime(statsSession.timePlayed.minutes)}</small>
+								</p>
+								<p>
+									All-time:
+									<br />
+									<small>{convertTime(statsLocal.timePlayed.minutes)}</small>
+								</p>
+							</div>
+						</div>
+						<div className='statsHiScore'>
+							<h3 className='statsH3'>Highscores:</h3>
+							<div className='hiScore'>
+								{statsLocal.hiscores &&
+									Object.keys(statsLocal.hiscores).map((key, i) => (
+										<p key={i}>
+											<b>{statsLocal.hiscores[key].name}:</b>{" "}
+											{statsLocal.hiscores[key].value}{" "}
+											{statsLocal.hiscores[key].valueName}
+										</p>
+									))}
+								{!statsLocal.hiscores && <p>No highscores to show...</p>}
+							</div>
 						</div>
 						<p></p>
 					</div>

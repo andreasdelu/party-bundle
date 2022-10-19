@@ -11,10 +11,14 @@ export default function Pictionary() {
 
 	const [turn, setTurn] = useState(0);
 	const [players, setPlayers] = useState([]);
+	const [guesser, setGuesser] = useState({});
+	const [guessList, setGuessList] = useState([]);
+
 	const [show, setShow] = useState(false);
 
 	const [guessDialog, setGuessDialog] = useState(false);
 	const [turnDialog, setTurnDialog] = useState(true);
+	const [endDialog, setEndDialog] = useState(false);
 
 	const [words, setWords] = useState([]);
 	const [currentWord, setCurrentWord] = useState("Harsk");
@@ -55,10 +59,7 @@ export default function Pictionary() {
 		setCurrentWord(words[rnd]);
 	}
 
-	function handleGuess(e) {
-		e.preventDefault();
-		console.log(e.target.guess.value);
-	}
+	useEffect(() => {}, [guessList]);
 
 	function nextTurn() {
 		if (turn + 1 === players.length) {
@@ -70,6 +71,7 @@ export default function Pictionary() {
 			setTurnDialog(false);
 		}
 		setGuessWord();
+		setGuessList([]);
 		setBgs([]);
 		setPenColor(defaultColor);
 		setPenWidth(defaultWidth);
@@ -85,6 +87,29 @@ export default function Pictionary() {
 		} else {
 			setShow(true);
 		}
+	}
+
+	async function drawingDone() {
+		for (const player of players) {
+			if (player !== players[turn]) {
+				setGuesser(player);
+				setGuessDialog(true);
+				let guess = await playerGuess(player);
+				setGuessList((guessList) => [...guessList, guess]);
+			}
+		}
+		setGuessDialog(false);
+		setEndDialog(true);
+	}
+
+	function playerGuess(player) {
+		return new Promise((resolve, reject) => {
+			document.getElementById("wordGuess").onsubmit = (e) => {
+				e.preventDefault();
+				resolve({ player: player, guess: e.target.guess.value });
+				e.target.guess.value = "";
+			};
+		});
 	}
 
 	let points = [];
@@ -148,9 +173,43 @@ export default function Pictionary() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	}
 
+	function PenSizeIndicator({ size, color }) {
+		return (
+			<div
+				style={{
+					width: size + "px",
+					height: size + "px",
+					backgroundColor: color,
+				}}
+				className='indicator'></div>
+		);
+	}
+	function Guess({ guess }) {
+		let word = guess.guess.toLowerCase().replace(/\s/g, "");
+
+		return currentWord.toLowerCase().replace(/\s/g, "") === word ? (
+			<p className='guess guessCorrect'>
+				<b>{guess.player.name}:</b> <p className='theWord'>'{word}'</p>
+			</p>
+		) : (
+			<p className='guess guessFalse'>
+				<b>{guess.player.name}:</b> <p className='theWord'>'{word}'</p>
+			</p>
+		);
+	}
+
 	return (
 		<>
-			<h1 className='gameTitle'>Drawing</h1>
+			<h1 style={{ margin: 0 }} className='gameTitle'>
+				Pictionary
+			</h1>
+			<div className='drawer'>
+				{players.length && (
+					<p style={{ margin: 0 }} className='bodyText'>
+						<b>{players[turn].name}</b> is drawing!
+					</p>
+				)}
+			</div>
 			<div ref={canvasContainer} className='canvasContainer'>
 				<div className='canvasBG'></div>
 				{bgs.map((bg, i) => (
@@ -179,10 +238,30 @@ export default function Pictionary() {
 					<small>Color</small>
 				</div>
 				<div className='penSize'>
+					<div style={{ display: "none" }} className='indicatorWrap'>
+						<div className='indicatorBG'></div>
+						<PenSizeIndicator color={penColor} size={penWidth} />
+					</div>
 					<div className='psContainer'>
 						<input
 							value={penWidth}
 							onChange={(e) => setPenWidth(e.target.value)}
+							onMouseDown={() =>
+								(document.querySelector(".indicatorWrap").style.display =
+									"grid")
+							}
+							onMouseUp={() =>
+								(document.querySelector(".indicatorWrap").style.display =
+									"none")
+							}
+							onTouchStart={() =>
+								(document.querySelector(".indicatorWrap").style.display =
+									"grid")
+							}
+							onTouchEnd={() =>
+								(document.querySelector(".indicatorWrap").style.display =
+									"none")
+							}
 							min={4}
 							max={40}
 							type='range'
@@ -190,40 +269,42 @@ export default function Pictionary() {
 							id='penWidth'
 						/>
 					</div>
-					<small>Size: {penWidth} px</small>
+					<small>Size{/* : {penWidth} px */}</small>
 				</div>
 			</div>
-			<div className='drawer'>
-				{players.length && (
-					<p style={{ margin: 0 }} className='bodyText'>
-						<b>{players[turn].name}</b> is drawing!
-					</p>
-				)}
+			<div className='pictionaryFooter'>
+				<div className='wordContainer'>
+					<p className='drawWord'>"{currentWord}"</p>
+					{!show && (
+						<div onClick={showWord} className='wordHide'>
+							Show Word
+						</div>
+					)}
+				</div>
+
+				<Button
+					classes={bgs.length ? "" : "buttonDisabled"}
+					onClick={drawingDone}
+					text={"Done"}
+				/>
 			</div>
-			<div className='wordContainer'>
-				<p className='drawWord'>"{currentWord}"</p>
-				{!show && (
-					<div onClick={showWord} className='wordHide'>
-						Show Word
-					</div>
-				)}
-			</div>
-			<button onClick={nextTurn}>Next</button>
 
 			<Dialog
 				id={"guessDialog"}
 				isOpen={guessDialog}
-				closeClick={() => setGuessDialog(false)}
 				dialogContent={
 					<div className='dialogContainer'>
-						<h2>Guess the word</h2>
-						<form
-							id='wordGuess'
-							onSubmit={(e) => {
-								setGuessDialog(false);
-								handleGuess(e);
-							}}>
-							<label htmlFor='inputGuess'>Your guess:</label>
+						<h2>{guesser && guesser.name} is guessing</h2>
+						<div className='guessImageWrap'>
+							{bgs &&
+								bgs.map((bg, i) => (
+									<img key={i} className='guessImage' src={bg} alt='guess' />
+								))}
+						</div>
+						<form id='wordGuess'>
+							<label style={{ marginTop: 10 }} htmlFor='inputGuess'>
+								Your guess:
+							</label>
 							<input
 								type='text'
 								name='guess'
@@ -236,6 +317,28 @@ export default function Pictionary() {
 								<Button classes={"fitWidth"} text={"Guess"} />
 							</button>
 						</form>
+					</div>
+				}
+			/>
+			<Dialog
+				id={"endDialog"}
+				isOpen={endDialog}
+				dialogContent={
+					<div className='dialogContainer'>
+						<h2>Round over</h2>
+						<p className='correctWord textBody'>
+							Correct word: <br />
+							<b>'{currentWord}'</b>
+						</p>
+						{guessList &&
+							guessList.map((guess, i) => <Guess key={i} guess={guess} />)}
+						<Button
+							onClick={() => {
+								nextTurn();
+								setEndDialog(false);
+							}}
+							text={"Next round"}
+						/>
 					</div>
 				}
 			/>

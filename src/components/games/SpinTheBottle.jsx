@@ -5,7 +5,7 @@ import Button from "../Button";
 import Player from "../Player";
 import bottle from "../../assets/bottle.svg";
 
-export default function SpinTheBottle() {
+export default function SpinTheBottle({ diff }) {
 	const [players] = useState(JSON.parse(sessionStorage.getItem("players")));
 	const [chosenPlayer, setchosenPlayer] = useState(null);
 	const [spins, setSpins] = useState(3);
@@ -35,7 +35,7 @@ export default function SpinTheBottle() {
 		const spinTo = 360 * spins + degree + "deg";
 		bottle.ontransitionend = () => {
 			const playerContainer = document.getElementById(`${degree}`);
-			playerContainer.style.filter = "drop-shadow(0 0 20px #0b27ff81)";
+			playerContainer.style.filter = "drop-shadow(0 0 5px #0b27ff81)";
 			const player = players.filter(
 				(p) => p.id === parseInt(playerContainer.dataset.playerid)
 			);
@@ -91,7 +91,7 @@ export default function SpinTheBottle() {
 							<p>
 								Look into the eyes of the person to your left, while you confess
 								your love to them. Make it heartfelt! Otherwise take
-								<b> 3 sips</b>
+								<b> {3 + parseInt(diff)} sips</b>
 							</p>
 						</div>
 					)}

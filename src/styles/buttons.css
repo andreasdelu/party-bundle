@@ -13,6 +13,21 @@
 	transition: scale 0.2s, box-shadow 0.2s;
 }
 
+.buttonLong {
+	background: linear-gradient(#ff6cee, #777eff);
+	width: 300px;
+	height: 80px;
+	aspect-ratio: 1;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	transition: scale 0.2s, box-shadow 0.2s;
+	margin-bottom: 20px;
+}
+
 .button {
 	aspect-ratio: 0;
 	border-radius: 10px;
@@ -23,6 +38,7 @@
 }
 
 .buttonBig:hover,
+.buttonLong:hover,
 .button:hover {
 	scale: 1.02;
 	box-shadow: 0 0 10px rgba(217, 0, 255, 0.5);

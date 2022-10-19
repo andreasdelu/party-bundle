@@ -11,7 +11,9 @@ import Player from "../components/Player";
 export default function AddPlayers() {
 	const [userImage, setUserImage] = useState("");
 	const [userList, setUserList] = useState(
-		JSON.parse(sessionStorage.getItem("players"))
+		sessionStorage.getItem("players")
+			? JSON.parse(sessionStorage.getItem("players"))
+			: []
 	);
 	const inputRef = useRef(null);
 	const formRef = useRef(null);
@@ -98,16 +100,17 @@ export default function AddPlayers() {
 			<div className='addPlayersWrap'>
 				<p className='bodyText'>Add players:</p>
 				<div className='playerContainer'>
-					{userList.map((user) => (
-						<Player
-							removable={true}
-							onClick={removePlayer}
-							key={user.id}
-							id={user.id}
-							name={user.name}
-							image={user.image}
-						/>
-					))}
+					{userList &&
+						userList.map((user) => (
+							<Player
+								removable={true}
+								onClick={removePlayer}
+								key={user.id}
+								id={user.id}
+								name={user.name}
+								image={user.image}
+							/>
+						))}
 				</div>
 				{userList.length <= 9 ? (
 					<button type='button' onClick={openDialog} className='addButton'>

@@ -5,9 +5,11 @@ import logo from "../assets/logo.svg";
 import cards from "../assets/cards.svg";
 import social from "../assets/social.svg";
 import dice from "../assets/dice.svg";
+import guldHornene from "../assets/guld-hornene.svg";
 import controller from "../assets/controller.svg";
 import ButtonBig from "../components/ButtonBig";
 import Header from "../components/Header";
+import ButtonLong from "../components/ButtonLong";
 export default function HomePage() {
 	return (
 		<>
@@ -41,6 +43,13 @@ export default function HomePage() {
 						extraStyle={{ size: "55%", dropOpacity: 0 }}
 						image={controller}
 						text={"Mini Games"}
+					/>
+				</Link>
+				<Link className='buttonLink' to={"/mini"}>
+					<ButtonLong
+						extraStyle={{ size: "55%", dropOpacity: 0 }}
+						image={guldHornene}
+						text={"Spin N' Win"}
 					/>
 				</Link>
 			</div>

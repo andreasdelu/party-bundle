@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "../../styles/ReactionGame.css";
 import Button from "../Button";
+import { saveStats } from "../../modules/Save";
 
 export default function ReactionGame({ diff }) {
 	const boxRef = useRef(null);
@@ -57,6 +58,12 @@ export default function ReactionGame({ diff }) {
 			"Your Reaction Time is: " + reactionTime + " seconds";
 
 		boxRef.current.style.display = "none";
+
+		saveStats("reaction", {
+			name: "Reaction time",
+			value: reactionTime,
+			valueName: "seconds",
+		});
 
 		diaRef.current.showModal();
 	}

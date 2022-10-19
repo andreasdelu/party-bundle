@@ -1,13 +1,24 @@
 function saveStats(key, object) {
 	if (window.localStorage.getItem("stats")) {
 		let stats = JSON.parse(window.localStorage.getItem("stats"));
-		if (stats[`${key}`].value < object.value) {
-			stats[`${key}`] = object;
+		if (stats.hiscores) {
+			if (key === "reaction") {
+				if (!stats.hiscores[key] || stats.hiscores[key].value > object.value) {
+					stats.hiscores[key] = object;
+				}
+			} else {
+				if (!stats.hiscores[key] || stats.hiscores[key].value < object.value) {
+					stats.hiscores[key] = object;
+				}
+			}
+		} else {
+			stats.hiscores = {};
+			stats.hiscores[key] = object;
 		}
 		window.localStorage.setItem("stats", JSON.stringify(stats));
 	} else {
 		let stats = {};
-		stats[`${key}`] = object;
+		stats.hiscores[key] = object;
 		window.localStorage.setItem("stats", JSON.stringify(stats));
 	}
 }
