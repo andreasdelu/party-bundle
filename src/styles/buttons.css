@@ -26,6 +26,21 @@
 	cursor: pointer;
 	transition: scale 0.2s, box-shadow 0.2s;
 	margin-bottom: 20px;
+	position: relative;
+	overflow: hidden;
+}
+
+.buttonLongBg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	isolation: isolate;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.12;
 }
 
 .button {
@@ -58,6 +73,8 @@
 	margin: 0;
 	margin-bottom: 0.7rem;
 	user-select: none;
+	isolation: isolate;
+	z-index: 1;
 }
 
 .button .buttonText {

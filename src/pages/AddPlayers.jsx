@@ -50,6 +50,10 @@ export default function AddPlayers() {
 
 	function addPlayer(e) {
 		e.preventDefault();
+		if (inputRef.current.value.length === 0) {
+			inputRef.current.classList.add("inputWrong");
+			return;
+		}
 		if (inputRef.current.value.length > 11) {
 			inputRef.current.value = inputRef.current.value.substring(0, 11);
 		}
@@ -142,6 +146,11 @@ export default function AddPlayers() {
 							maxLength={11}
 							autoComplete='off'
 							required
+							onChange={() => {
+								if (inputRef.current.classList.contains("inputWrong")) {
+									inputRef.current.classList.remove("inputWrong");
+								}
+							}}
 						/>
 						<small>(Max 11 characters)</small>
 						<label htmlFor='uploadPhoto'>Add a picture:</label>

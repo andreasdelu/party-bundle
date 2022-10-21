@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../styles/Games.css";
 import "../../styles/spinThebottle.css";
 import Button from "../Button";
@@ -16,9 +16,33 @@ export default function SpinTheBottle({ diff }) {
 		let degree = Math.floor(360 / players.length) * i;
 		bottleRotations.push(degree);
 	});
+	const [truths, setTruths] = useState([]);
+	const [dares, setDares] = useState([]);
+	const [currentPrompt, setCurrentPrompt] = useState("");
+	let usedTruths = [];
+	let usedDares = [];
+
+	useEffect(() => {
+		async function fetchQuestions() {
+			const url =
+				"https://party-bundle-default-rtdb.europe-west1.firebasedatabase.app/spinbottle/en.json";
+			const res = await fetch(url);
+			const data = await res.json();
+
+			setTruths(data.truth);
+			setDares(data.dare);
+		}
+
+		fetchQuestions();
+	}, []);
+	useEffect(() => {
+		usedTruths = truths;
+		usedDares = dares;
+	}, [truths, dares]);
 
 	function spin() {
 		setchosenPlayer(null);
+		setCurrentPrompt("");
 		const playerList = document.querySelectorAll(".spinPlayerContainer");
 		playerList.forEach((player) => {
 			player.style.filter = "";
@@ -43,6 +67,25 @@ export default function SpinTheBottle({ diff }) {
 		};
 		bottle.style.transform = `rotate(${spinTo})`;
 		setPrevDegree(degree);
+	}
+
+	function showTruth() {
+		if (!usedTruths.length) {
+			usedTruths = truths;
+		}
+		const rnd = Math.floor(Math.random() * usedTruths.length);
+		const q = usedTruths[rnd];
+		usedTruths = usedTruths.filter((question, i) => i !== rnd);
+		setCurrentPrompt(q);
+	}
+	function showDare() {
+		if (!usedDares.length) {
+			usedDares = dares;
+		}
+		const rnd = Math.floor(Math.random() * usedDares.length);
+		const q = usedDares[rnd];
+		usedDares = usedDares.filter((question, i) => i !== rnd);
+		setCurrentPrompt(q);
 	}
 
 	return (
@@ -88,11 +131,22 @@ export default function SpinTheBottle({ diff }) {
 					{chosenPlayer && (
 						<div className='promptWrap'>
 							<h2>You're up {chosenPlayer.name}!</h2>
-							<p>
-								Look into the eyes of the person to your left, while you confess
-								your love to them. Make it heartfelt! Otherwise take
-								<b> {3 + parseInt(diff)} sips</b>
-							</p>
+							{currentPrompt ? (
+								<>
+									<p>{currentPrompt}</p>
+									<p>
+										Penalty:
+										<b>
+											{Math.floor(Math.random() * 4) + 1 + parseInt(diff)} sips
+										</b>
+									</p>
+								</>
+							) : (
+								<div className='spinButtons'>
+									<Button onClick={showTruth} text={"Truth"} />
+									<Button onClick={showDare} text={"Dare"} />
+								</div>
+							)}
 						</div>
 					)}
 				</div>

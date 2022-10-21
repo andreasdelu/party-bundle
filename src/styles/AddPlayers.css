@@ -12,8 +12,9 @@
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
 	margin: 0 auto 20px auto;
+	padding: 5px;
 	max-height: calc(100% - 250px);
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: hidden;
 	position: relative;
 }
@@ -45,4 +46,9 @@
 
 .addButton img {
 	width: 1.1rem;
+}
+
+.inputWrong {
+	outline: 2px solid red;
+	transition: outline 0.1s;
 }
