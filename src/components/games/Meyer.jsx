@@ -27,27 +27,31 @@ export default function Meyer({ diff }) {
 	const [shake, setShake] = useState("");
 	let terninger = [dice1, dice2, dice3, dice4, dice5, dice6];
 
+	/* Rulning af terninger samt værdien  */
 	function rollDice() {
 		resetAll();
 		animate();
 
+		/* Tæller så "det eller derover" kun er muligt efter i omgang 2 */
 		if (count >= 2) {
 			setAbove(true);
 		} else {
 			setAbove(false);
 		}
 
+		/* Math.random til rulning af terninger */
 		let rnd = Math.floor(Math.random() * 6);
 		let rnd2 = Math.floor(Math.random() * 6);
 		setTerning1(terninger[rnd]);
 		setTerning2(terninger[rnd2]);
 
+		/* Værdien af terningerne printet ud til brugeren */
 		if (rnd > rnd2) {
 			setValue(`${rnd + 1}${rnd2 + 1}`);
 		} else if (rnd2 > rnd) {
 			setValue(`${rnd2 + 1}${rnd + 1}`);
 		} else if (rnd === rnd2) {
-			setValue(`Par ${rnd + 1}`);
+			setValue(`Pair of ${rnd + 1}`);
 		}
 
 		if ((rnd + 1) * 10 + rnd2 + 1 === 21 || (rnd2 + 1) * 10 + rnd + 1 === 21) {
@@ -69,6 +73,7 @@ export default function Meyer({ diff }) {
 		setHidden(false);
 	}
 
+	/* Function til at sætte alle useState tilbage til false */
 	function resetAll() {
 		setNewGame(false);
 		setHaveRolled(false);
@@ -80,6 +85,7 @@ export default function Meyer({ diff }) {
 		setNewGame(false);
 	}
 
+	/* Næste person */
 	function next() {
 		resetAll();
 		setNextPLayer(true);
@@ -87,6 +93,7 @@ export default function Meyer({ diff }) {
 		setValue("Next player");
 	}
 
+	/* Løft/tjek slag */
 	function liftCup() {
 		resetAll();
 		setLift(true);
@@ -94,6 +101,7 @@ export default function Meyer({ diff }) {
 		setHidden(false);
 	}
 
+	/* Det eller derover */
 	function itOver() {
 		resetAll();
 		setItOrOver(true);
@@ -102,13 +110,16 @@ export default function Meyer({ diff }) {
 		setValue("It or above");
 	}
 
+	/* Reset spil */
 	function newGameAgain() {
 		resetAll();
 		setNewGame(true);
 		setCount(1);
+		/* set hidden skjuler ternigner ved true */
 		setHidden(true);
 	}
 
+	/* Animation på terninger ved slag */
 	function animate() {
 		setShake("shake");
 
@@ -124,6 +135,8 @@ export default function Meyer({ diff }) {
 				<div className={"terninger " + shake}>
 					<div className='diceCont'>
 						<img className='dice' src={terning1} alt='terning' />
+						{/* Bestemmelse af hvilke knapper og værdier der skal vises
+						 udfra hvilken useState der er "true" */}
 						{hidden && (
 							<>
 								<img

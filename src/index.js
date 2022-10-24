@@ -14,6 +14,7 @@ import CardGames from "./pages/CardGames";
 import SocialGames from "./pages/SocialGames";
 import { saveTimeTotal, saveTimeSession } from "./modules/Save";
 import SpinWin from "./components/games/SpinWin";
+import Rewards from "./pages/Rewards";
 
 setInterval(() => {
 	saveTimeTotal();
@@ -34,6 +35,7 @@ root.render(
 				<Route path='/cards' element={<CardGames />} />
 				<Route path='/social' element={<SocialGames />} />
 				<Route path='/spinwin' element={<SpinWin />} />
+				<Route path='/rewards' element={<Rewards />} />
 				<Route path='/game/:game/:diff' element={<Game />} />
 				<Route path='/game/:game/difficulty/' element={<Difficulty />} />
 				<Route path='/game/:game/players/' element={<AddPlayers />} />

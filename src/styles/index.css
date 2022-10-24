@@ -163,7 +163,8 @@ form {
 	z-index: -1;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="email"] {
 	font-size: 1.1rem;
 	border: none;
 	border-radius: 8px;
@@ -173,11 +174,13 @@ input[type="text"] {
 	caret-color: white;
 	color: white;
 }
-input[type="text"]::placeholder {
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
 	color: rgba(255, 255, 255, 0.493);
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="email"]:focus {
 	outline: none;
 }
 

@@ -8,6 +8,7 @@ import backspace from "../../assets/backspace.svg";
 export default function Pictionary() {
 	const canvasRef = useRef(null);
 	const canvasContainer = useRef(null);
+	const guessRef = useRef(null);
 
 	const [turn, setTurn] = useState(0);
 	const [players, setPlayers] = useState([]);
@@ -94,6 +95,7 @@ export default function Pictionary() {
 			if (player !== players[turn]) {
 				setGuesser(player);
 				setGuessDialog(true);
+				guessRef.current.focus();
 				let guess = await playerGuess(player);
 				setGuessList((guessList) => [...guessList, guess]);
 			}
@@ -108,6 +110,7 @@ export default function Pictionary() {
 				e.preventDefault();
 				resolve({ player: player, guess: e.target.guess.value });
 				e.target.guess.value = "";
+				e.target.guess.readOnly = true;
 			};
 		});
 	}
@@ -302,16 +305,20 @@ export default function Pictionary() {
 								))}
 						</div>
 						<form id='wordGuess'>
+							<input type='hidden' />
 							<label style={{ marginTop: 10 }} htmlFor='inputGuess'>
 								Your guess:
 							</label>
 							<input
+								ref={guessRef}
 								type='text'
 								name='guess'
 								id='inputGuess'
 								placeholder='Word'
 								autoComplete='off'
 								required
+								readOnly
+								onClick={() => (guessRef.current.readOnly = false)}
 							/>
 							<button type='submit' className='dialogBtn'>
 								<Button classes={"fitWidth"} text={"Guess"} />

@@ -78,6 +78,7 @@ export default function SpinTheBottle({ diff }) {
 		usedTruths = usedTruths.filter((question, i) => i !== rnd);
 		setCurrentPrompt(q);
 	}
+
 	function showDare() {
 		if (!usedDares.length) {
 			usedDares = dares;

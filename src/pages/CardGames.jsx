@@ -10,9 +10,6 @@ export default function CardGames() {
 			<Header />
 			<p className='bodyText'>Choose a game:</p>
 			<div className='btnContainer'>
-				<Link className='buttonLink' to={"/game/bus/players"}>
-					<Button text={"Busride"} />
-				</Link>
 				<Link className='buttonLink' to={"/game/overunder/diff-1"}>
 					<Button text={"Over/Under"} />
 				</Link>

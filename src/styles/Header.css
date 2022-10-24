@@ -144,3 +144,37 @@
 	height: 30px;
 	filter: invert(1);
 }
+
+.languageWrap {
+	width: 70%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.languageWrap label {
+	margin: 0;
+}
+
+select {
+	background-color: transparent;
+	border: 2px solid white;
+	border-radius: 99999px;
+	padding: 2px 5px;
+	height: fit-content;
+}
+
+select:focus {
+	outline: none;
+}
+
+option {
+	font-size: 1rem;
+}
+
+.active {
+	user-select: none;
+	pointer-events: none;
+	opacity: 0.4;
+}

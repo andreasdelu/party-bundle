@@ -1,3 +1,4 @@
+/* Tegne lærred */
 canvas {
 	display: block;
 	margin: 0 auto;
@@ -9,6 +10,7 @@ canvas {
 	position: relative;
 }
 
+/* Undo knap  */
 #retry {
 	display: block;
 	margin: 0;
@@ -25,6 +27,7 @@ canvas {
 	overflow: hidden;
 }
 
+/* Lærred baggrund  */
 .canvasBG {
 	position: absolute;
 	background-color: white;
@@ -45,6 +48,7 @@ canvas {
 	user-select: none;
 }
 
+/* Styling af værktøjer  */
 .penSettings {
 	width: calc(100% - (var(--margin) * 2));
 	height: 60px;
@@ -58,7 +62,7 @@ canvas {
 
 .penSettings small {
 	margin: 0;
-	margin-bottom: 4px;
+	margin-bottom: 0px;
 }
 
 .penSize,
@@ -89,7 +93,7 @@ canvas {
 
 #penWidth {
 	height: 20px;
-	margin-bottom: 15px;
+	margin-bottom: 12px;
 	height: fit-content;
 	width: 100px;
 	-webkit-appearance: none;
@@ -97,6 +101,7 @@ canvas {
 	background-color: transparent;
 }
 
+/* Titel over hvis tur det er */
 .drawer {
 	display: flex;
 	flex-direction: column;
@@ -110,6 +115,7 @@ canvas {
 	align-items: center;
 }
 
+/* Show/hide word knap  */
 .wordContainer {
 	width: 300px;
 	height: 50px;

@@ -13,7 +13,6 @@ export default function DiceGames() {
 				<Link className='buttonLink' to={"/game/meyer/players"}>
 					<Button text={"Meyer"} />
 				</Link>
-				<Button text={"Snyd"} />
 			</div>
 		</>
 	);

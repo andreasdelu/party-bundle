@@ -5,7 +5,7 @@ import logo from "../assets/logo.svg";
 import menu from "../assets/menu.svg";
 import arrow from "../assets/arrow.svg";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import close from "../assets/close.svg";
 import gear from "../assets/gear.svg";
 import stats from "../assets/stats.svg";
@@ -89,6 +89,13 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 							<img src={stats} alt='stats' />
 							Statistics
 						</div>
+						<NavLink
+							to={"/rewards"}
+							style={{ transitionDelay: "0.25s", textDecoration: "none" }}
+							className='menuButton swipeIn'>
+							<img src={stats} alt='stats' />
+							Rewards
+						</NavLink>
 						{showRules ? (
 							<div
 								style={{ transitionDelay: "0.3s" }}
@@ -139,6 +146,17 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 				dialogContent={
 					<div className='dialogContainer'>
 						<h2>Settings</h2>
+						<div className='languageWrap'>
+							<label htmlFor='languages'>Language:</label>
+							<select id='languages'>
+								<option value='EN'>EN</option>
+								<option value='DE'>DE</option>
+								<option value='DK'>DK</option>
+								<option value='SE'>SE</option>
+								<option value='NO'>NO</option>
+								<option value='ES'>ES</option>
+							</select>
+						</div>
 					</div>
 				}
 			/>
@@ -202,6 +220,12 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 				dialogContent={
 					<div className='dialogContainer'>
 						<h2>About Us</h2>
+						<p className='textBody'>
+							We made <b>Party Bundle</b> to make sure you have all you need to
+							kickstart your party! <br /> <br /> Whether you are pregaming with
+							your best mates or you need to break the ice with a bunch of
+							soon-to-be friends, we have the game for you!
+						</p>
 					</div>
 				}
 			/>

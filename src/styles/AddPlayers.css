@@ -1,9 +1,11 @@
+/* Wrapper til hele add-player site */
 .addPlayersWrap {
 	height: calc(100vh - 100px);
 	width: 100%;
 	position: relative;
 }
 
+/* Section for spiller der bliver tilføjet */
 .playerContainer {
 	max-width: fit-content;
 	display: grid;
@@ -23,6 +25,7 @@
 	grid-column: span 2;
 }
 
+/* Knap til tilføjelse af spillere */
 .addButton {
 	background: linear-gradient(#6cc6ff, #777eff);
 	border: none;
@@ -48,6 +51,7 @@
 	width: 1.1rem;
 }
 
+/* Makering af ingen input */
 .inputWrong {
 	outline: 2px solid red;
 	transition: outline 0.1s;

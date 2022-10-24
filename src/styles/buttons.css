@@ -1,3 +1,4 @@
+/* Kvadrat knap styling  */
 .buttonBig,
 .button {
 	background: linear-gradient(#ff6cee, #777eff);
@@ -13,6 +14,7 @@
 	transition: scale 0.2s, box-shadow 0.2s;
 }
 
+/* Stor rektangel knap til focus */
 .buttonLong {
 	background: linear-gradient(#ff6cee, #777eff);
 	width: 300px;
@@ -43,6 +45,7 @@
 	opacity: 0.12;
 }
 
+/* Generel lille rektangel knap */
 .button {
 	aspect-ratio: 0;
 	border-radius: 10px;
@@ -59,6 +62,7 @@
 	box-shadow: 0 0 10px rgba(217, 0, 255, 0.5);
 }
 
+/* Baggrundsbillede på knap */
 .buttonImage {
 	height: 50%;
 	display: block;
