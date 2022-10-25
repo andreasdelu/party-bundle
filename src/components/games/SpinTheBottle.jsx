@@ -136,7 +136,7 @@ export default function SpinTheBottle({ diff }) {
 								<>
 									<p>{currentPrompt}</p>
 									<p>
-										Penalty:
+										Penalty:{" "}
 										<b>
 											{Math.floor(Math.random() * 4) + 1 + parseInt(diff)} sips
 										</b>

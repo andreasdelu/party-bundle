@@ -15,6 +15,7 @@ import twitter from "../assets/twitter.svg";
 import instagram from "../assets/instagram.svg";
 import facebook from "../assets/facebook.svg";
 import Dialog from "./Dialog";
+import reward from "../assets/reward.svg";
 
 export default function Header({ onlySettings, showRules, ruleContent }) {
 	const [settingsDialog, setSettingsDialog] = useState(false);
@@ -93,7 +94,7 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 							to={"/rewards"}
 							style={{ transitionDelay: "0.25s", textDecoration: "none" }}
 							className='menuButton swipeIn'>
-							<img src={stats} alt='stats' />
+							<img src={reward} alt='rewards' />
 							Rewards
 						</NavLink>
 						{showRules ? (

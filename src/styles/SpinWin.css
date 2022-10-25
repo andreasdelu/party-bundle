@@ -97,6 +97,7 @@
 	border: 5px solid rgb(89, 164, 255);
 	border-radius: 50%;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+	padding: 0;
 }
 
 #buttonMarker {
@@ -183,4 +184,8 @@
 }
 #noSpin p {
 	margin-bottom: 0;
+}
+
+#noSpin img {
+	max-height: 40px;
 }

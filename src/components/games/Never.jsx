@@ -62,7 +62,7 @@ export default function Never() {
 	return (
 		<>
 			<h1 className='gameTitle'>Never Have I Ever</h1>
-			<div ref={stackRef} className='stack'>
+			<div style={{ zIndex: 0 }} ref={stackRef} className='stack'>
 				<div className='card'>Loading...</div>
 				<div className='card'>Loading...</div>
 				<div className='card'>Loading...</div>

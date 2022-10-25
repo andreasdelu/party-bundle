@@ -10,6 +10,7 @@ import drink from "../../assets/wheel/drink.svg";
 import shots from "../../assets/wheel/shotswheel.svg";
 import discount from "../../assets/wheel/discountcode.svg";
 import hourglass from "../../assets/wheel/hourglass.svg";
+import { Link } from "react-router-dom";
 
 export default function SpinWin() {
 	const wheelRef = useRef(null);
@@ -20,13 +21,15 @@ export default function SpinWin() {
 	);
 	const [timeLeft, setTimeLeft] = useState("Calculating time...");
 
+	const currentSponsor = "Café Guldhornene";
+
 	const prizes = [
 		{
 			deg: 45,
 			prize: "1 free wardrobe ticket!",
 			col: "#ffb936",
 			icon: garderobe,
-			reward: "1 Wardrobe Ticket",
+			reward: "Wardrobe Ticket",
 		},
 		{
 			deg: 90,
@@ -39,7 +42,7 @@ export default function SpinWin() {
 			prize: "1 Free Shot!",
 			col: "#ff4864",
 			icon: shots,
-			reward: "1 Shot",
+			reward: "Free Shot",
 		},
 		{
 			deg: 180,
@@ -58,7 +61,7 @@ export default function SpinWin() {
 			prize: "1 Free Drink",
 			col: "#1d7dff",
 			icon: drink,
-			reward: "1 Drink",
+			reward: "Free Drink",
 		},
 		{
 			deg: 315,
@@ -127,10 +130,27 @@ export default function SpinWin() {
 		if (p.reward) {
 			if (localStorage.getItem("rewards")) {
 				const rewards = JSON.parse(localStorage.getItem("rewards"));
-				rewards.push(p.reward);
+				rewards.push({
+					sponsor: currentSponsor,
+					reward: p.reward,
+					time: Date.now(),
+					icon: p.icon,
+					color: p.col,
+				});
 				localStorage.setItem("rewards", JSON.stringify(rewards));
 			} else {
-				localStorage.setItem("rewards", JSON.stringify([p.reward]));
+				localStorage.setItem(
+					"rewards",
+					JSON.stringify([
+						{
+							sponsor: currentSponsor,
+							reward: p.reward,
+							time: Date.now(),
+							icon: p.icon,
+							color: p.col,
+						},
+					])
+				);
 			}
 		}
 	}
@@ -315,13 +335,16 @@ export default function SpinWin() {
 						</div>
 						<div className='prize'>
 							<label>Spin the wheel to claim your daily prize</label>
-							<label>Find your prizes under rewards</label>
+							<label>
+								Find your prizes under <Link to={"/rewards"}>rewards</Link>
+							</label>
 						</div>
 					</>
 				)}
 				{!canSpin && (
 					<>
 						<div id='noSpin'>
+							<img src={hourglass} alt='hourglass' />
 							<h2>No more spins today...</h2>
 							<p className='textBody'>Come back tomorrow!</p>
 							<p className='textBody'>{timeLeft}</p>
