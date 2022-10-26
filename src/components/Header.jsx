@@ -29,7 +29,7 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 	const [statsSession, setStatsSession] = useState(
 		JSON.parse(sessionStorage.getItem("stats"))
 	);
-
+	//Konverterer tid fra fra minutter
 	function convertTime(minutes) {
 		let hour = Math.floor(minutes / 60);
 		let minute = Math.floor(minutes) % 60;
@@ -42,10 +42,12 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 		onlySettings = false;
 	}
 
+	//Håndterer back knap
 	function goBack() {
 		window.history.back();
 	}
 
+	//Åbner burgermenu
 	function openMenu() {
 		const menu = menuRef.current;
 		menu.classList.add("menuShow");
@@ -59,6 +61,7 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 		<>
 			<header id='header'>
 				{!onlySettings && (
+					/* Generel opsætning af headeren  */
 					<>
 						<img onClick={goBack} className='headerArrow' src={arrow} alt='' />
 						<Link to={"/"}>
@@ -66,11 +69,13 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 						</Link>
 					</>
 				)}
+				{/* Åbning af burgermenu  */}
 				<img onClick={openMenu} className='headerMenu' src={menu} alt='cog' />
 			</header>
 			<div ref={menuRef} id='menu'>
 				<div className='menuContainer'>
 					<img className='menuLogo' src={logo} alt='' />
+					{/* Menupunkter med animation */}
 					<div className='menuButtons'>
 						<div
 							style={{ transitionDelay: "0.1s" }}
@@ -140,6 +145,7 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 				/>
 			</div>
 
+			{/* Dialogboks som viser settings */}
 			<Dialog
 				id={"settingsDialog"}
 				isOpen={settingsDialog}
@@ -161,6 +167,8 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 					</div>
 				}
 			/>
+
+			{/* Dialogboks som viser statistics*/}
 			<Dialog
 				id={"statisticsDialog"}
 				isOpen={statisticsDialog}
@@ -201,6 +209,8 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 					</div>
 				}
 			/>
+
+			{/* Dialogboks som viser regler*/}
 			<Dialog
 				id={"rulesDialog"}
 				isOpen={rulesDialog}
@@ -214,6 +224,8 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 					</div>
 				}
 			/>
+
+			{/* Dialogboks som viser About */}
 			<Dialog
 				id={"aboutDialog"}
 				isOpen={aboutDialog}

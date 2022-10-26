@@ -1,3 +1,5 @@
+/* Generel styling af HTML */
+/* Deklaration af globale css variabler */
 :root {
 	--margin: 20px;
 	font-family: articulat-cf, sans-serif;
@@ -62,12 +64,14 @@ p {
 	text-decoration: none;
 }
 
+/* Mindste text på siden */
 small {
 	color: rgba(255, 255, 255, 0.651);
 	margin: 0;
 	margin-top: 5px;
 }
 
+/* Styling af alle labels på siden */
 label {
 	color: white;
 	font-size: 1.1rem;
@@ -84,6 +88,7 @@ dialog {
 	box-sizing: border-box;
 }
 
+/* Styling af specefikke dialog boxe */
 #settingsDialog {
 	background: linear-gradient(#8748ff, #9a10ff) !important;
 }
@@ -123,6 +128,7 @@ form {
 	cursor: pointer;
 }
 
+/* Styling til kamera ikon*/
 .uploadPhotoContainer {
 	height: 100px;
 	width: 100px;
@@ -163,6 +169,7 @@ form {
 	z-index: -1;
 }
 
+/* Opsætning til uploading af billede */
 input[type="text"],
 input[type="email"] {
 	font-size: 1.1rem;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+//Error page er hvis brugeren går ind på et link som ikke fører til noget, fx hvis du skriver noget oppe i linkaddressen som ikke er i koden
 export default function ErrorPage() {
 	return (
 		<>

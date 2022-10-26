@@ -4,6 +4,7 @@ import close from "../assets/close.svg";
 export default function Dialog({ id, isOpen, dialogContent, closeClick }) {
 	const diaRef = useRef(null);
 
+	/*Åbne og lukke funktion på dialog boksen  */
 	useEffect(() => {
 		const dialog = diaRef.current;
 		if (isOpen) {
@@ -14,22 +15,10 @@ export default function Dialog({ id, isOpen, dialogContent, closeClick }) {
 		}
 	}, [isOpen]);
 
-	function handleClick(e) {
-		/* const dialog = diaRef.current;
-		let rect = dialog.getBoundingClientRect();
-		let isInDialog =
-			rect.top <= e.clientY &&
-			e.clientY <= rect.top + rect.height &&
-			rect.left <= e.clientX &&
-			e.clientX <= rect.left + rect.width;
-		if (!isInDialog) {
-			dialog.close();
-		} */
-	}
-
 	return (
+		/* Fremviser åbne og lukke funktionen og printer dialogboksen */
 		<>
-			<dialog onClick={handleClick} ref={diaRef} id={id}>
+			<dialog ref={diaRef} id={id}>
 				{closeClick && (
 					<img
 						onClick={closeClick}

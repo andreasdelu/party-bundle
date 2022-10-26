@@ -1,3 +1,4 @@
+/* Wrapper til opsætning af hjulet */
 .wheelWrap {
 	width: calc(100vw - 40px);
 	height: calc(100vw - 40px);
@@ -8,6 +9,7 @@
 	margin-bottom: 20px;
 }
 
+/* Overlay, når man har spinnet hjulet*/
 .wheeloverlay {
 	width: 100%;
 	max-width: 350px;
@@ -40,6 +42,7 @@
 	max-height: 50px;
 }
 
+/* Gør at hjulet spinner rundt*/
 .wheelInner {
 	width: calc(100vw - 40px);
 	box-sizing: border-box;
@@ -54,7 +57,7 @@
 	transition: transform 5s;
 	rotate: calc(45deg / 2);
 }
-
+/* De individuelle tærte formede bokse inde i circklen*/
 .wheelSegment {
 	position: absolute;
 	transform-origin: right bottom;
@@ -65,6 +68,8 @@
 	right: 50%;
 	isolation: isolate;
 }
+
+/* Streger som opdeler circklen i bokse*/
 .lines {
 	position: absolute;
 	width: 100%;
@@ -82,6 +87,7 @@
 	background-color: rgb(89, 164, 255);
 }
 
+/* Spin knappen i midten */
 #spinWheel {
 	isolation: isolate;
 	position: absolute;
@@ -110,7 +116,7 @@
 	left: 50%;
 	border-radius: 3px;
 }
-
+/* Definer størrelsen og styling af icons inde i hjulet */
 .icons {
 	width: 100%;
 	height: 100%;
@@ -139,10 +145,13 @@
 	margin-top: 20px;
 }
 
+/* Sponsor logoet under overskrift */
+
 #sponsorLogo {
 	width: 200px;
 }
 
+/* Styling af overlay som fremviser hvad man har vundet */
 .prize {
 	display: flex;
 	flex-direction: column;

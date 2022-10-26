@@ -20,6 +20,8 @@ export default function AddPlayers() {
 
 	const { game } = useParams();
 
+	//Læser filen fra file input elementet og nedskalerer det ved at putte det på et mindre canvas element
+	//Billedets data bliver så gemt som state til senere brug
 	function dialogImage(e) {
 		let reader = new FileReader();
 		let file = e.target.files[0];
@@ -47,7 +49,7 @@ export default function AddPlayers() {
 			img.src = reader.result;
 		};
 	}
-
+	//Læser data fra add player formularen og gemmer data i sessionStorage
 	function addPlayer(e) {
 		e.preventDefault();
 		if (inputRef.current.value.length === 0) {
@@ -79,6 +81,8 @@ export default function AddPlayers() {
 		setUserList(newList);
 	}
 
+	//Styre at åbne add player modal og at lukke hvis der klikkes udenfor modal-box
+
 	function openDialog() {
 		const dialog = document.getElementById("addPlayer");
 		dialog.showModal();
@@ -101,6 +105,7 @@ export default function AddPlayers() {
 	return (
 		<>
 			<Header />
+			{/* Container til alle spiller ikoner */}
 			<div className='addPlayersWrap'>
 				<p className='bodyText'>Add players:</p>
 				<div className='playerContainer'>
@@ -116,6 +121,7 @@ export default function AddPlayers() {
 							/>
 						))}
 				</div>
+				{/* Så længe der er under 10 spillere vises tilføj knappen */}
 				{userList.length <= 9 ? (
 					<button type='button' onClick={openDialog} className='addButton'>
 						<img src={plus} alt='plus' />
@@ -123,6 +129,7 @@ export default function AddPlayers() {
 				) : (
 					<p className='textBody'>Max players reached</p>
 				)}
+				{/* Hvis der er tilføjet mindst 1 spiller så bliver "next" knappen tilgængelig */}
 				{userList.length ? (
 					<Link className='buttonLink' to={`/game/${game}/difficulty/`}>
 						<Button classes={"buttonFixed"} text={"Next"} />
@@ -131,6 +138,7 @@ export default function AddPlayers() {
 					<Button classes={"buttonFixed buttonDisabled"} text={"Next"} />
 				)}
 			</div>
+			{/* Dialog boks med formular til at tilføje spiller */}
 			<dialog id='addPlayer'>
 				<div className='dialogContainer'>
 					<img className='dialogClose' src={close} alt='' />

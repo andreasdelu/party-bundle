@@ -22,12 +22,15 @@ export default function OverUnder() {
 	let cardValue2;
 	let prevValue;
 
+	//Sørger for at næste kort er tilfældigt
 	function spawnCard() {
 		setCardSuit(suits[Math.floor(Math.random() * suits.length)]);
 		cardValue2 = Math.floor(Math.random() * 13) + 1;
 		setCardValue(cardValue2);
 	}
 
+	//Håndterer når brugeren trykker på "over" knappen
+	//Skifter kortet når det animarer om til bagsiden
 	function over() {
 		setFlipped("flipCard");
 		setButtons(false);
@@ -50,6 +53,9 @@ export default function OverUnder() {
 			}, 300);
 		}, 600);
 	}
+
+	//Håndterer når brugeren trykker på "under" knappen
+	//Skifter kortet når det animarer om til bagsiden
 	function under() {
 		setFlipped("flipCard");
 		setButtons(false);
@@ -73,6 +79,7 @@ export default function OverUnder() {
 		}, 600);
 	}
 
+	//Viser en dialogboks med brugerens score når brugeren gætter forkert
 	function gameEnd() {
 		setButtons(false);
 		setScoreDialog(true);
@@ -83,6 +90,7 @@ export default function OverUnder() {
 		});
 	}
 
+	//Håndterer at starte et nyt spil ved at reset alt i spillet
 	function newGame() {
 		setWins(0);
 		setScoreDialog(false);
@@ -123,6 +131,7 @@ export default function OverUnder() {
 					)}
 				</div>
 			</div>
+			{/* Dialogboks der viser hvor mange rigtige brugeren fik */}
 			<Dialog
 				id={"scoreDialog"}
 				isOpen={scoreDialog}

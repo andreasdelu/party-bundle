@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import "../styles/DiceGames.css";
 import { Link } from "react-router-dom";
 
+//Underside til cardgames, hvor de spil inde i den sektion bliver fremvist og kan trykkes på
 export default function CardGames() {
 	return (
 		<>

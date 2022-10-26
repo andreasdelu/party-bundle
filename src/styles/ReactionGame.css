@@ -1,9 +1,11 @@
+/* Generel opsætning til reaction spil */
 #container-reaction {
 	display: flex;
 	margin: auto;
 	justify-content: center;
 }
 
+/* Dialog boks som printer data ud som tekst */
 #box {
 	width: 200px;
 	height: 200px;
@@ -13,6 +15,7 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Container til reactionGame */
 .reactionContainer {
 	height: 70vh;
 	width: 100%;

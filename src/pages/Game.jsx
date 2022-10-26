@@ -12,10 +12,12 @@ export default function Game() {
 	const { game, diff } = useParams();
 	const [difficulty, setDifficulty] = useState("");
 
+	//Implementerer difficulty koden
 	useEffect(() => {
 		setDifficulty(diff.split("-")[1]);
 	}, [diff]);
 
+	//Regler som er i burgermenuen viser hvordan man spillet spillet. Det ændre sig, efter hvilket spil brugeren er inde på.
 	const rules = [
 		{
 			name: "meyer",
@@ -124,6 +126,8 @@ export default function Game() {
 			),
 		},
 	];
+
+	//Definere hvad overskriften er på reglerne. Fx hvis du er inde på meyer, så er overskriften meyer osv.
 	const [currentRule] = useState(() => {
 		for (let i = 0; i < rules.length; i++) {
 			if (rules[i].name === game) {
@@ -132,6 +136,7 @@ export default function Game() {
 		}
 	});
 
+	//Liste over overskrifterne, så det er nemmere at sætte ind
 	return (
 		<>
 			<Header showRules={true} ruleContent={currentRule} />

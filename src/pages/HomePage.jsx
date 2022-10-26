@@ -16,6 +16,7 @@ export default function HomePage() {
 			<Header onlySettings={true} />
 			<img id='homeLogo' src={logo} alt='' />
 			<p className='bodyText'>Choose a game type:</p>
+			{/* Container til alle knapperne på forsiden */}
 			<div className='homeContent'>
 				<Link className='buttonLink' to={"/cards"}>
 					<ButtonBig

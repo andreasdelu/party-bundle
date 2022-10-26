@@ -157,6 +157,7 @@ canvas {
 	justify-content: center;
 }
 
+/* Pen størrelse slither styling */
 input[type="range"]:focus {
 	outline: none;
 }

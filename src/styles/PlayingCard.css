@@ -1,3 +1,4 @@
+/* Styling af kort til over/under */
 .playingCard {
 	padding: 20px;
 	background-color: transparent;
@@ -21,6 +22,7 @@
 	animation: start 0.5s 0s ease;
 }
 
+/* Animation til at flippe kortet*/
 @keyframes start {
 	from {
 		transform: rotateY(180deg);
@@ -30,6 +32,7 @@
 	}
 }
 
+/* Outline til at indikere om spilleren har vundet eller tabt */
 .winCard {
 	outline: 5px solid rgb(18, 242, 48);
 }
@@ -41,6 +44,7 @@
 	transform: rotateY(180deg);
 }
 
+/* Styling af front siden af kortet */
 .playingCardFront {
 	border-radius: 10px;
 	background-color: white;
@@ -55,6 +59,7 @@
 	backface-visibility: hidden;
 }
 
+/* Styling af bagsiden af kortet */
 .playingCardBack {
 	box-sizing: border-box;
 	background-color: white;
@@ -85,6 +90,7 @@
 	width: 70%;
 }
 
+/* Opsætning af numre øverst og nederest på kortet */
 .playingCardTop,
 .playingCardBot {
 	width: 100%;
@@ -92,6 +98,8 @@
 	display: flex;
 	align-items: center;
 }
+
+/* Styling af værdi i midten af kortet */
 .playingCardMid {
 	flex-grow: 1;
 	display: flex;
@@ -102,10 +110,12 @@
 	height: 70%;
 }
 
+/* styling af bunden af kortet */
 .playingCardBot {
 	justify-content: flex-end;
 }
 
+/* Tilføjelse af numre øverst og nederest på kortet */
 .playingCardValue {
 	font-weight: 900;
 	font-size: 1.5rem;
@@ -114,6 +124,7 @@
 	width: 2ch;
 }
 
+/* Styling af værdi på kortet */
 .playingCardSuit {
 	height: 60%;
 }

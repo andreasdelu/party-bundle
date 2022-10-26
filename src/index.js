@@ -16,12 +16,15 @@ import { saveTimeTotal, saveTimeSession } from "./modules/Save";
 import SpinWin from "./components/games/SpinWin";
 import Rewards from "./pages/Rewards";
 
+//Gemmer brugerens spilletid
 setInterval(() => {
 	saveTimeTotal();
 	saveTimeSession();
 }, 60000);
 saveTimeTotal();
 saveTimeSession();
+
+//Path til undersiderne, så de har en custom linkaddresse, ved hjælp af react router dom.
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -44,7 +47,4 @@ root.render(
 	</React.StrictMode>
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register();

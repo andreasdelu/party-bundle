@@ -70,6 +70,7 @@
 	margin: auto 0;
 }
 
+/* Styling af text på knapperne */
 .buttonText {
 	font-weight: 800;
 	color: white;
@@ -82,6 +83,7 @@
 	z-index: 1;
 }
 
+/* Placering af knapper */
 .buttonSmall {
 	margin: 0;
 	position: absolute;
@@ -101,6 +103,7 @@
 	transform: translateX(-50%);
 }
 
+/* Class til at disable knapper */
 .buttonDisabled {
 	pointer-events: none;
 	user-select: none;
@@ -122,6 +125,7 @@
 	box-shadow: 0 0 0px transparent;
 }
 
+/* Centrering af knapper */
 .centerAbsolute {
 	position: absolute;
 	left: 50%;
@@ -148,6 +152,7 @@
 	overflow: hidden;
 }
 
+/* knapper under reward siden */
 .buttonRewardBg {
 	position: absolute;
 	top: -15px;

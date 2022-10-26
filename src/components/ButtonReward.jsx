@@ -10,7 +10,8 @@ export default function ButtonReward({
 	sponsor,
 	time,
 }) {
-	time = Date.now() - time + 7 * 24 * 60 * 60 * 1000;
+	//Knap til at vise rewards som brugeren har opnået
+	time = time + 7 * 24 * 60 * 60 * 1000 - Date.now();
 
 	return (
 		<>

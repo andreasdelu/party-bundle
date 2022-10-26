@@ -10,6 +10,7 @@ export default function Never() {
 
 	const stackRef = useRef(null);
 
+	// Fetcher alle spørgsmål fra databasen
 	useEffect(() => {
 		async function fetchQuestions() {
 			const url =
@@ -22,6 +23,7 @@ export default function Never() {
 		fetchQuestions();
 	}, []);
 
+	//Sætter spørgsmål på de første 4 kort ved page load
 	useEffect(() => {
 		let stack = stackRef.current;
 		if (stackRef && allQuestions.length) {
@@ -37,6 +39,7 @@ export default function Never() {
 		};
 	}, [allQuestions]);
 
+	//Håndterer at skifte til næste kort
 	function swap(e) {
 		let card = document.querySelector(".card:last-child");
 		if (e.target !== card) return;
@@ -49,6 +52,7 @@ export default function Never() {
 		}, 700);
 	}
 
+	//Tager et tilfældigt spørgsmål fra listen af spørgsmål, fjerner det fra listen og returner det
 	function randomQuestion() {
 		if (!filteredQuestions.length) {
 			filteredQuestions = allQuestions;

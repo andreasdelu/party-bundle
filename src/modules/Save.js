@@ -1,3 +1,4 @@
+//Checker om der er gemte stats i forvejen og gemmer/opdaterer så i localStorage
 function saveStats(key, object) {
 	if (window.localStorage.getItem("stats")) {
 		let stats = JSON.parse(window.localStorage.getItem("stats"));
@@ -23,6 +24,7 @@ function saveStats(key, object) {
 	}
 }
 
+//Gammer den totale spilletid i localStorage
 function saveTimeTotal() {
 	if (window.localStorage.getItem("stats")) {
 		let stats = JSON.parse(window.localStorage.getItem("stats"));
@@ -47,6 +49,8 @@ function saveTimeTotal() {
 		window.localStorage.setItem("stats", JSON.stringify(stats));
 	}
 }
+
+//Gemmer spilletid denne spilsession i sessionStorage
 function saveTimeSession() {
 	if (window.sessionStorage.getItem("stats")) {
 		let stats = JSON.parse(window.sessionStorage.getItem("stats"));

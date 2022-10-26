@@ -22,6 +22,7 @@ export default function SpinTheBottle({ diff }) {
 	let usedTruths = [];
 	let usedDares = [];
 
+	//Fetcher alle spørgsmål fra databasen
 	useEffect(() => {
 		async function fetchQuestions() {
 			const url =
@@ -35,11 +36,14 @@ export default function SpinTheBottle({ diff }) {
 
 		fetchQuestions();
 	}, []);
+
+	//Sætter spørgsmålene i arrays der kan manipuleres
 	useEffect(() => {
 		usedTruths = truths;
 		usedDares = dares;
 	}, [truths, dares]);
 
+	//Spinner flasken og vælger den spiller flasken peger på
 	function spin() {
 		setchosenPlayer(null);
 		setCurrentPrompt("");
@@ -69,6 +73,7 @@ export default function SpinTheBottle({ diff }) {
 		setPrevDegree(degree);
 	}
 
+	//Viser en "truth"
 	function showTruth() {
 		if (!usedTruths.length) {
 			usedTruths = truths;
@@ -78,7 +83,7 @@ export default function SpinTheBottle({ diff }) {
 		usedTruths = usedTruths.filter((question, i) => i !== rnd);
 		setCurrentPrompt(q);
 	}
-
+	//Viser en "dare"
 	function showDare() {
 		if (!usedDares.length) {
 			usedDares = dares;

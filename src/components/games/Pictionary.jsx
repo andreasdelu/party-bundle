@@ -31,12 +31,14 @@ export default function Pictionary() {
 
 	const [bgs, setBgs] = useState([]);
 
+	//Setup af canvas og importerer spillerene
 	useEffect(() => {
 		canvasRef.current.width = window.innerWidth - 40;
 		canvasRef.current.height = canvasRef.current.width;
 
 		setPlayers(JSON.parse(sessionStorage.getItem("players")));
 
+		//Fetcher alle orderene fra databasen
 		async function fetchWords() {
 			const url =
 				"https://party-bundle-default-rtdb.europe-west1.firebasedatabase.app/pictionary/en.json";
@@ -48,6 +50,7 @@ export default function Pictionary() {
 		fetchWords();
 	}, []);
 
+	//Sætter et random ord som det nuværende ord der skal gættes, når siden loader
 	useEffect(() => {
 		let rnd = Math.floor(Math.random() * words.length);
 		setCurrentWord(words[rnd]);
@@ -55,6 +58,7 @@ export default function Pictionary() {
 
 	useEffect(() => {}, [bgs]);
 
+	//Sætter et random ord som det nuværende ord der skal gættes
 	function setGuessWord() {
 		let rnd = Math.floor(Math.random() * words.length);
 		setCurrentWord(words[rnd]);
@@ -62,6 +66,7 @@ export default function Pictionary() {
 
 	useEffect(() => {}, [guessList]);
 
+	//Håndterer at skifte turen til næste spiller
 	function nextTurn() {
 		if (turn + 1 === players.length) {
 			setTurn(0);
@@ -79,6 +84,7 @@ export default function Pictionary() {
 		setTurnDialog(true);
 	}
 
+	//Viser ordet der skal tegnes og skjuler det igen efter 1500ms
 	function showWord(e) {
 		if (!show) {
 			setShow(true);
@@ -90,6 +96,7 @@ export default function Pictionary() {
 		}
 	}
 
+	//Håndterer at lade spillerne gætte hver i sær når tegningen er færdig
 	async function drawingDone() {
 		for (const player of players) {
 			if (player !== players[turn]) {
@@ -104,6 +111,7 @@ export default function Pictionary() {
 		setEndDialog(true);
 	}
 
+	// Returner et promise med en spillers gæt
 	function playerGuess(player) {
 		return new Promise((resolve, reject) => {
 			document.getElementById("wordGuess").onsubmit = (e) => {
@@ -117,6 +125,7 @@ export default function Pictionary() {
 
 	let points = [];
 
+	//Tegner alle punkter gemt i points-arrayet på canvasset
 	function canvasLoad() {
 		const canvas = canvasRef.current;
 		const ctx = canvas.getContext("2d");
@@ -145,6 +154,7 @@ export default function Pictionary() {
 		});
 	}
 
+	//Skubber et punkt til points-arrayet, med tilhørende data, og loader canvas
 	function drawLine(e) {
 		const canvas = canvasContainer.current;
 		const x = e.targetTouches[0].clientX;
@@ -160,6 +170,7 @@ export default function Pictionary() {
 		requestAnimationFrame(canvasLoad);
 	}
 
+	//Sletter et billede fra bgs-arrayet
 	function back() {
 		if (bgs.length > 1) {
 			setBgs(bgs.slice(0, -1));
@@ -168,6 +179,8 @@ export default function Pictionary() {
 		}
 	}
 
+	//Når brugeren stopper med at tegne gemmes billedet på canvasset i bgs-arrayet
+	//Dette gøres for at øge performance
 	function handleTouchEnd() {
 		points = [];
 		const canvas = canvasRef.current;
@@ -176,6 +189,7 @@ export default function Pictionary() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	}
 
+	//Viser den lille indikator over pen-størrelse slideren
 	function PenSizeIndicator({ size, color }) {
 		return (
 			<div
@@ -187,6 +201,8 @@ export default function Pictionary() {
 				className='indicator'></div>
 		);
 	}
+
+	//Viser om spilleren har gættet rigtigt, med mulighed for at stave en lille smule forkert
 	function Guess({ guess }) {
 		let word = guess.guess.toLowerCase().replace(/\s/g, "");
 
@@ -206,6 +222,7 @@ export default function Pictionary() {
 			<h1 style={{ margin: 0 }} className='gameTitle'>
 				Pictionary
 			</h1>
+			{/* Viser navnet på den spiller der tegner */}
 			<div className='drawer'>
 				{players.length && (
 					<p style={{ margin: 0 }} className='bodyText'>
@@ -213,6 +230,7 @@ export default function Pictionary() {
 					</p>
 				)}
 			</div>
+			{/* Canvas elementet samt alle "baggrundende" */}
 			<div ref={canvasContainer} className='canvasContainer'>
 				<div className='canvasBG'></div>
 				{bgs.map((bg, i) => (
@@ -225,6 +243,7 @@ export default function Pictionary() {
 					ref={canvasRef}
 					id='drawingCanvas'></canvas>
 			</div>
+			{/* Indstillingerne for tegneredskabet */}
 			<div className='penSettings'>
 				<div className='backContainer'>
 					<img onClick={back} id='retry' src={backspace} alt='' />
@@ -272,9 +291,10 @@ export default function Pictionary() {
 							id='penWidth'
 						/>
 					</div>
-					<small>Size{/* : {penWidth} px */}</small>
+					<small>Size</small>
 				</div>
 			</div>
+			{/* Container til knapperne "show word" og "done" */}
 			<div className='pictionaryFooter'>
 				<div className='wordContainer'>
 					<p className='drawWord'>"{currentWord}"</p>
@@ -292,6 +312,7 @@ export default function Pictionary() {
 				/>
 			</div>
 
+			{/* Dialogboks til at håndtere spillerens gæt */}
 			<Dialog
 				id={"guessDialog"}
 				isOpen={guessDialog}
@@ -327,6 +348,7 @@ export default function Pictionary() {
 					</div>
 				}
 			/>
+			{/* Dialogboks der viser hvilke spillere der gættede rigtigt */}
 			<Dialog
 				id={"endDialog"}
 				isOpen={endDialog}
@@ -349,6 +371,7 @@ export default function Pictionary() {
 					</div>
 				}
 			/>
+			{/* Dialogboks der viser hvis tur det er til at tegne */}
 			<Dialog
 				id={"turnDialog"}
 				isOpen={turnDialog}

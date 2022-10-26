@@ -1,3 +1,4 @@
+/* Styling af logo på forsiden */
 #homeLogo {
 	width: 100%;
 	max-width: 300px;
@@ -7,6 +8,7 @@
 	box-sizing: border-box;
 }
 
+/* Opsætning af knapper på forsiden */
 .homeContent {
 	width: 100%;
 	max-width: 300px;

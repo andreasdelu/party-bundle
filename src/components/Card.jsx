@@ -7,10 +7,12 @@ import diamonds from "../assets/cards/diamonds.svg";
 import logo from "../assets/logo.svg";
 
 export default function Card({ suit, value, extraClasses }) {
+	//Spillekort der kan ændre sig gennem props
 	const [currentSuit, setCurrentSuit] = useState(null);
 	const [currentColor, setCurrentColor] = useState("");
 	const [currentValue, setCurrentValue] = useState("10");
 
+	//Sætter de forskellige useStates ud fra to switch statements
 	useEffect(() => {
 		switch (suit) {
 			case "hearts":
@@ -58,6 +60,8 @@ export default function Card({ suit, value, extraClasses }) {
 
 	return (
 		<>
+			{/* Container til spillekort, med elementer der bruger 
+			props og states til at vise hvilket kort det er */}
 			<div className='playingCard'>
 				<div className={`playingCardInner ${extraClasses}`}>
 					<div className='playingCardFront'>

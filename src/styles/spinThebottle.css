@@ -1,3 +1,4 @@
+/* Opsætning af cirkel til spillerene samt flaske i midten */
 .spinPlayerContainer {
 	height: calc(100vw / 2);
 	max-height: 200px;
@@ -9,6 +10,7 @@
 	transition: filter 0.2s;
 }
 
+/* Container til hele spillet */
 .bottleGame {
 	width: 100%;
 	height: 100%;
@@ -18,6 +20,7 @@
 	padding: 0;
 	position: relative;
 }
+
 .playerCircle {
 	position: relative;
 	width: 100%;
@@ -28,6 +31,7 @@
 	place-items: center;
 }
 
+/* Placering af flaske */
 .bottle {
 	height: 120px;
 	animation: spin 2s linear infinite;
@@ -36,6 +40,7 @@
 	transition-duration: 2s;
 }
 
+/* Styling af text og knapper i bunden */
 .promptWrap {
 	display: flex;
 	flex-direction: column;
@@ -44,13 +49,17 @@
 	padding: 0 20px;
 }
 
+/* Text til at indikere hvis tur det er */
 .promptWrap h2 {
 	margin-bottom: 20px;
 }
+
+/* Styling af text på knapper */
 .promptWrap p {
 	margin: 0;
 }
 
+/* Opsætning af knapper i bunden */
 .spinButtons {
 	display: flex;
 	flex-direction: column;

@@ -1,3 +1,4 @@
+/* Opsætning ved tilføjelse af spiller */
 .playerCard {
 	display: flex;
 	flex-direction: column;
@@ -6,12 +7,14 @@
 	position: relative;
 }
 
+/* Container af billede og text */
 .playerImageContainer {
 	position: relative;
 	width: 80px;
 	height: 80px;
 }
 
+/* Styling af billede cirklen */
 .playerImageBackground {
 	background: linear-gradient(#6cc6ff, #777eff);
 	width: 100%;
@@ -22,6 +25,7 @@
 	border-radius: 50%;
 }
 
+/* Styling ved tilføjelse af spiller billede */
 .playerImage {
 	width: 100%;
 	height: 100%;
@@ -31,6 +35,7 @@
 	box-sizing: border-box;
 }
 
+/* Placering af navn under billede */
 .playerName {
 	font-size: 1.2rem;
 	color: white;
@@ -39,6 +44,7 @@
 	text-align: center;
 }
 
+/* Styling af kryds til at slette en spiller */
 .deletePlayer {
 	position: absolute;
 	right: 0;

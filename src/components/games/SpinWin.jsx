@@ -20,9 +20,9 @@ export default function SpinWin() {
 		parseInt(localStorage.getItem("wheel"))
 	);
 	const [timeLeft, setTimeLeft] = useState("Calculating time...");
-
+	//Den nuværende sponsor
 	const currentSponsor = "Café Guldhornene";
-
+	//Liste over alle muligheder på hjulet
 	const prizes = [
 		{
 			deg: 45,
@@ -77,7 +77,7 @@ export default function SpinWin() {
 			reward: "20% Discount",
 		},
 	];
-
+	//Udregner og sætter tiden der er tilbage inden brugeren kan spinne hjulet igen
 	function calcTime() {
 		const now = Date.now();
 		const next = dataTime + 24 * 60 * 60 * 1000;
@@ -88,6 +88,7 @@ export default function SpinWin() {
 		setTimeLeft(`${h}h ${m}m ${s}s`);
 	}
 
+	//Håndterer nedtælling af timer
 	useEffect(() => {
 		if (localStorage.getItem("wheel")) {
 			const next = dataTime + 24 * 60 * 60 * 1000;
@@ -116,9 +117,10 @@ export default function SpinWin() {
 		}
 	}, []);
 
-	/* Spins wheel and shows prize */
+	/* Spinner hjul og viser præmien */
 
 	function spinWheel() {
+		document.getElementById("spinWheel").disabled = true;
 		const p = prizes[Math.floor(Math.random() * 8)];
 		setPrize(p);
 		const rot = p.deg;
@@ -158,11 +160,14 @@ export default function SpinWin() {
 	return (
 		<>
 			<Header />
+			{/* Container til content */}
 			<div className='gameContainer'>
 				<h1 className='gameTitle'>Spin N' Win!</h1>
 				<img id='sponsorLogo' src={sponsor} alt='sponsor' />
+				{/* Hvis brugeren kan spinne vises nedenstående */}
 				{canSpin && (
 					<>
+						{/* Hjul opbygget af firkanter stylet så de ligner et hjul */}
 						<div className='wheelWrap'>
 							<div ref={wheelRef} className='wheelInner'>
 								<div
@@ -316,7 +321,7 @@ export default function SpinWin() {
 									</div>
 								</div>
 							</div>
-
+							{/* Spinner hjulet */}
 							<button onClick={spinWheel} type='button' id='spinWheel'>
 								Spin
 								<div id='buttonMarker'></div>
@@ -333,14 +338,10 @@ export default function SpinWin() {
 								<p>Play again tomorrow!</p>
 							</div>
 						</div>
-						<div className='prize'>
-							<label>Spin the wheel to claim your daily prize</label>
-							<label>
-								Find your prizes under <Link to={"/rewards"}>rewards</Link>
-							</label>
-						</div>
 					</>
 				)}
+
+				{/* Hvis brugeren ikke må spinne vises dette */}
 				{!canSpin && (
 					<>
 						<div id='noSpin'>
@@ -351,6 +352,12 @@ export default function SpinWin() {
 						</div>
 					</>
 				)}
+				<div className='prize'>
+					<label>Spin the wheel to claim your daily prize</label>
+					<label>
+						Find your prizes under <Link to={"/rewards"}>rewards</Link>
+					</label>
+				</div>
 			</div>
 		</>
 	);

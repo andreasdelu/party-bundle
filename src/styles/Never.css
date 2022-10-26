@@ -1,9 +1,11 @@
+/* Container/opsætning til "jeg har aldrig" */
 .stack {
 	width: 100vw;
 	height: 500px;
 	position: relative;
 }
 
+/* Styling specifikt af kortene */
 .card {
 	background: linear-gradient(#65b7fd, #3cacfd);
 	width: 80%;
@@ -49,6 +51,7 @@
 	border: #50a3eb83 solid;
 }
 
+/* Animation til at skifte kort */
 @keyframes swap {
 	50% {
 		transform: translate(-50%, calc(var(--y) - 250px)) scale(0.85) rotate(-5deg);

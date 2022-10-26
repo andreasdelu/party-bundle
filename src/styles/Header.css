@@ -1,3 +1,4 @@
+/* Opsætning af header container */
 #header {
 	width: 100%;
 	display: flex;
@@ -8,10 +9,12 @@
 	max-height: 100px;
 }
 
+/* Logo styling */
 .headerLogo {
 	height: 55px;
 }
 
+/* Burgermenu */
 .headerMenu {
 	width: 30px;
 	position: absolute;
@@ -22,6 +25,7 @@
 	cursor: pointer;
 }
 
+/* Tilbage knap header */
 .headerArrow {
 	height: 30px;
 	position: absolute;
@@ -31,6 +35,7 @@
 	cursor: pointer;
 }
 
+/* Styling af åbning af burgermenu */
 #menu {
 	position: fixed;
 	right: calc(-100vw - 100px);
@@ -41,12 +46,14 @@
 	transition: 0.3s ease-in-out;
 }
 
+/* Logo når burgermenu er åben */
 .menuLogo {
 	height: 55px;
 	margin: 20px auto 50px auto;
 	padding-left: 100px;
 }
 
+/* Animation til åbning af burgermenu */
 .menuShow {
 	right: 0 !important;
 }
@@ -59,6 +66,7 @@
 	transform: translateX(130vw);
 }
 
+/* Animation til lukning af menu */
 .menuClose {
 	width: 1.4rem;
 	position: absolute;
@@ -67,6 +75,8 @@
 	padding: 20px;
 	cursor: pointer;
 }
+
+/* Container til burgermenuen */
 .menuContainer {
 	position: absolute;
 	right: 0;
@@ -78,6 +88,7 @@
 	flex-direction: column;
 	align-items: center;
 	box-sizing: border-box;
+	/* Animation til bølger ved åbning af menuen */
 	--mask: radial-gradient(142.44px at 191.75px 50%, #000 99%, #0000 101%) 0
 			calc(50% - 130px) / 100% 260px,
 		radial-gradient(142.44px at -126.75px 50%, #0000 99%, #000 101%) 65px 50%/100%
@@ -86,6 +97,7 @@
 	mask: var(--mask);
 }
 
+/* Kanpper under burgermenuen */
 .menuButtons {
 	display: flex;
 	flex-direction: column;
@@ -110,21 +122,25 @@
 	cursor: pointer;
 }
 
+/* Ikoner */
 .menuButton img {
 	height: 32px;
 }
 
+/* Hover effekt  */
 .menuButton:hover {
 	background-color: #3d51ff;
 	border-radius: 10px;
 }
 
+/* Class til at disable knapper i menuen */
 .menuButtonDisabled {
 	user-select: none;
 	pointer-events: none;
 	opacity: 0.4;
 }
 
+/* Link til sociale medier */
 .menuFooter {
 	margin-left: 100px;
 	display: flex;
@@ -146,6 +162,7 @@
 	filter: invert(1);
 }
 
+/* Opsætning af valg af sprog */
 .languageWrap {
 	width: 70%;
 	display: flex;
@@ -158,6 +175,7 @@
 	margin: 0;
 }
 
+/* Valg af sprog */
 select {
 	background-color: transparent;
 	border: 2px solid white;

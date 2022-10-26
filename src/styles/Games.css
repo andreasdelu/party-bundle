@@ -1,3 +1,4 @@
+/* Opsætning af hvert spil container */
 .game__container {
 	display: block;
 	max-width: 55vh;
@@ -19,6 +20,7 @@
 	margin-top: 0;
 }
 
+/* container til over/under spil */
 .overunderButtons {
 	display: flex;
 	flex-direction: column;

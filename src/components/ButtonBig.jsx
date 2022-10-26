@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/buttons.css";
 
 export default function ButtonBig({ extraStyle, image, text, small }) {
+	/* Stor knap, med mulighed for at ændre størrelse på billede og dropshadow gennem props */
+	/* Samt sætte andre værdier gennem props */
 	return (
 		<>
 			<div className='buttonBig'>

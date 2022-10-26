@@ -10,6 +10,7 @@ export default function ReactionGame({ diff }) {
 	const [start, setStart] = useState(false);
 	const [createdTime, setCreatedTime] = useState(0);
 
+	//Printer tilfældige farver ud
 	function getRandomColor() {
 		let letters = "0123456789ABCDEF".split("");
 		let color = "#";
@@ -22,10 +23,12 @@ export default function ReactionGame({ diff }) {
 	let clickedTime;
 	let reactionTime;
 
+	//Laver circklen på et random tidspunkt indenfor de 2 tal
 	function makeBox() {
 		let time = Math.random();
 		time = time * 4000 + 1000;
 
+		//Style til circklen
 		setTimeout(function () {
 			let size = 50;
 			size += Math.floor(Math.random() * 100);
@@ -33,6 +36,7 @@ export default function ReactionGame({ diff }) {
 			boxRef.current.style.width = size + "px";
 			boxRef.current.style.height = size + "px";
 
+			//Vælger et random sted circklen bliver vist på skærmen
 			let top = Math.random();
 			top = top * (contRef.current.offsetHeight - size);
 			let left = Math.random();
@@ -48,17 +52,19 @@ export default function ReactionGame({ diff }) {
 			setCreatedTime(Date.now());
 		}, time);
 	}
-
+	//Definerer hvad der sker når man har trykket på circklen
 	function handleClickBox(e) {
 		clickedTime = Date.now();
 
 		reactionTime = (clickedTime - createdTime) / 1000;
 
+		//Viser ens reactions tid i sekunder
 		document.getElementById("printReactionTime").innerHTML =
 			"Your Reaction Time is: " + reactionTime + " seconds";
 
 		boxRef.current.style.display = "none";
 
+		//Printer de hurtigste tid ind på statistics/highscores
 		saveStats("reaction", {
 			name: "Reaction time",
 			value: reactionTime,
@@ -79,6 +85,7 @@ export default function ReactionGame({ diff }) {
 	}
 	return (
 		<>
+			{/* Knap som starter spillet */}
 			<h1 className='gameTitle'>Speed Test</h1>
 			{!start && (
 				<Button
@@ -87,7 +94,7 @@ export default function ReactionGame({ diff }) {
 					text={"Start Game"}
 				/>
 			)}
-
+			{/* Dialog boks som printer data ud som tekst */}
 			<dialog ref={diaRef}>
 				<h1 id='overskrift'>You're fast!</h1>
 				<p id='printReactionTime'></p>
