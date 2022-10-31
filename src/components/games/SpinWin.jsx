@@ -12,6 +12,8 @@ import discount from "../../assets/wheel/discountcode.svg";
 import hourglass from "../../assets/wheel/hourglass.svg";
 import { Link } from "react-router-dom";
 
+import { saveStats } from "../../modules/Save";
+
 export default function SpinWin() {
 	const wheelRef = useRef(null);
 	const [canSpin, setCanSpin] = useState(null);
@@ -129,6 +131,11 @@ export default function SpinWin() {
 		};
 		wheelRef.current.style.transform = `rotate(-${rot + 1080}deg)`;
 		localStorage.setItem("wheel", Date.now());
+		saveStats("spin", {
+			name: "Spin N' Win",
+			value: 1,
+			valueName: "spin",
+		});
 		if (p.reward) {
 			if (localStorage.getItem("rewards")) {
 				const rewards = JSON.parse(localStorage.getItem("rewards"));

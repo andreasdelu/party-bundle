@@ -7,6 +7,13 @@ function saveStats(key, object) {
 				if (!stats.hiscores[key] || stats.hiscores[key].value > object.value) {
 					stats.hiscores[key] = object;
 				}
+			} else if (key === "spin") {
+				if (!stats.hiscores[key]) {
+					stats.hiscores[key] = object;
+				} else {
+					stats.hiscores[key].value += object.value;
+					stats.hiscores[key].valueName = object.valueName + "s";
+				}
 			} else {
 				if (!stats.hiscores[key] || stats.hiscores[key].value < object.value) {
 					stats.hiscores[key] = object;

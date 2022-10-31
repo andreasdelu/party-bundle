@@ -84,7 +84,7 @@ export default function OverUnder() {
 		setButtons(false);
 		setScoreDialog(true);
 		saveStats("overunder", {
-			name: "Over/Under",
+			name: "Higher/Lower",
 			value: wins,
 			valueName: "wins",
 		});
@@ -107,7 +107,7 @@ export default function OverUnder() {
 	return (
 		<>
 			<div className='gameContainer'>
-				<h1 className='gameTitle'>Over/Under</h1>
+				<h1 className='gameTitle'>Higher/Lower</h1>
 				<Card extraClasses={flipped} suit={cardSuit} value={cardValue} />
 				<p>
 					Wins: {wins}
@@ -116,16 +116,20 @@ export default function OverUnder() {
 				<div className='overunderButtons'>
 					{buttons ? (
 						<>
-							<Button onClick={over} text={"Over"} />
-							<Button onClick={under} text={"Under"} />
+							<Button onClick={over} text={"Higher"} />
+							<Button onClick={under} text={"Lower"} />
 						</>
 					) : (
 						<>
-							<Button classes={"buttonDisabled"} onClick={over} text={"Over"} />
+							<Button
+								classes={"buttonDisabled"}
+								onClick={over}
+								text={"Higher"}
+							/>
 							<Button
 								classes={"buttonDisabled"}
 								onClick={under}
-								text={"Under"}
+								text={"Lower"}
 							/>
 						</>
 					)}

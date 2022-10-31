@@ -14,18 +14,6 @@
 	line-height: 1.5rem;
 }
 
-*::-webkit-scrollbar-track {
-	background: #010000;
-}
-*::-webkit-scrollbar-thumb {
-	background: #ffacacca;
-	border-radius: 25px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-	background: #ffacac5d;
-}
-
 body {
 	margin: 0 auto;
 	padding: 0;
@@ -62,6 +50,10 @@ p {
 }
 .buttonLink {
 	text-decoration: none;
+}
+
+.buttonLink:focus {
+	outline: none;
 }
 
 /* Mindste text på siden */
@@ -109,7 +101,7 @@ dialog h2 {
 	color: white;
 	text-align: center;
 	margin: 0;
-	font-weight: 800;
+	font-weight: 700;
 }
 
 .dialogContainer,
@@ -223,29 +215,35 @@ input[type="email"]:focus {
 	text-align: left;
 	padding: 20px;
 	max-height: 60vh;
-	overflow-y: scroll;
 }
 
-.dialogRules > * {
+.rulesContainer {
+	overflow-y: scroll;
+	max-height: 60vh;
+}
+
+.rulesContainer > * {
 	text-align: left;
 }
 
-.dialogRules ul {
+.rulesContainer ul {
 	text-align: left;
 	margin: 0;
+	padding-left: 20px;
 }
 
-.dialogRules h4 {
+.rulesContainer h4 {
 	font-size: 20px;
 }
 
-.dialogRules h5 {
-	font-size: 16px;
+.rulesContainer h5 {
+	font-size: 18px;
 }
 
-.dialogRules p {
+.rulesContainer p {
 	font-size: 16px;
 	padding: 0;
+	text-align: left;
 }
 
 .statsTime {

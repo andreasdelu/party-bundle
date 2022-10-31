@@ -1,6 +1,6 @@
 /* Container/opsætning til "jeg har aldrig" */
 .stack {
-	width: 100vw;
+	width: 100%;
 	height: 500px;
 	position: relative;
 }

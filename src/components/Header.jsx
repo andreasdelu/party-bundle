@@ -220,7 +220,11 @@ export default function Header({ onlySettings, showRules, ruleContent }) {
 						<h2>
 							Rules: <br /> {ruleContent && ruleContent.title}
 						</h2>
-						{ruleContent && ruleContent.rule}
+						{ruleContent && (
+							<div
+								className='rulesContainer'
+								dangerouslySetInnerHTML={{ __html: ruleContent.rule }}></div>
+						)}
 					</div>
 				}
 			/>

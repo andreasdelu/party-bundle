@@ -1,0 +1,27 @@
+[
+	{
+		"name": "meyer",
+		"title": "Meyer",
+		"rule": "<div className='dialogRules'><h4>How to play!</h4><p>Roll the dice and give the phone to the next person, clockwise.</p><h5>Combinations:</h5><ul><li>1+2: Meyer!</li><li>1+3: Little Meyer!</li><li>2+3: Cheers!</li><li>6+6: Pair 6 and so on</li><li>6+5: 65 and so on</li></ul><h5>Next player</h5><p>The next player has to roll higher than the previous player </p><h5>Roll</h5><p>Upon rolling the dice, the player have the option to lie or tell the truth</p><h5>Lift</h5><p>If the player don't believe what the previous player claims he/she rolled, the player has the option to lift, to showcase if the previous player lied or not. </p><p>If the previous player lied, they has to drink. If they told the truth, the player who chose lift, has to drink </p><h5>It or above</h5><p>If the player did not roll higher than the previous player, they will have a second chance, but what is rolled is not showcased for them. </p></div>"
+	},
+	{
+		"name": "speed",
+		"title": "Reaction",
+		"rule": "<div className='dialogRules'><h4>How to play!</h4><p>Click on the circles as fast as you can, and test your reaction time, whoever has the slowest time amongst the group, has to drink! </p></div>"
+	},
+	{
+		"name": "pictionary",
+		"title": "Pictionary",
+		"rule": "<div className='dialogRules'><h4>How to play!</h4><h5>Divide into groups of 2</h5><p>When it is your teammates turn to draw, you have to guess what he has drawn on the canvas </p><p>If you guess correctly the opposite team has to drink </p><p>If you guess incorrect your team has to drink </p></div>"
+	},
+	{
+		"name": "never",
+		"title": "Never Have I Ever",
+		"rule": "<div className='dialogRules'><h4>How to play!</h4><p>Click on the card to see the next question </p><p>A card is shown, if you have done what is shown on the card, you has to drink, otherwise don't. </p></div>"
+	},
+	{
+		"name": "overunder",
+		"title": "Over/Under",
+		"rule": "<div className='dialogRules'><h4>How to play!</h4><p>The player has the option to choose between higher or lower of the card that is shown, if you guess incorrectly you has to drink!</p><p>Ranging between Ace being the lowest and king being the highest</p><p>Whoever gets the lowest score amongst your group, has to do a dare, chosen by the winner</p></div>"
+	}
+]

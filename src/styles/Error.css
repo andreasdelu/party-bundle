@@ -1,0 +1,15 @@
+.titel-error {
+	font-size: 3rem;
+	font-weight: 900;
+	margin: 20px 0;
+	height: fit-content;
+}
+
+.ErrorImage {
+	max-height: 200px;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 0 20px;
+	margin: 0 auto;
+	display: block;
+}

@@ -179,7 +179,7 @@
 	position: relative;
 	border-radius: 50%;
 	overflow: hidden;
-	background-color: rgb(110, 77, 255);
+	background-color: #253c68;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.176);
 	margin: 20px 0;
 	display: flex;
@@ -193,6 +193,7 @@
 }
 #noSpin p {
 	margin-bottom: 0;
+	font-weight: 200;
 }
 
 #noSpin img {

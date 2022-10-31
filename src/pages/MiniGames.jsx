@@ -12,8 +12,8 @@ export default function MiniGames() {
 			<Header />
 			<p className='bodyText'>Choose a game:</p>
 			<div className='btnContainer'>
-				<Link className='buttonLink' to={"/game/reaction/diff-1"}>
-					<Button text={"Reaction"} />
+				<Link className='buttonLink' to={"/game/speed/diff-1"}>
+					<Button text={"Speed Test"} />
 				</Link>
 			</div>
 		</>

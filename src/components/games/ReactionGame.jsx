@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import "../../styles/ReactionGame.css";
 import Button from "../Button";
 import { saveStats } from "../../modules/Save";
+import { Link } from "react-router-dom";
 
 export default function ReactionGame({ diff }) {
 	const boxRef = useRef(null);
@@ -88,11 +89,19 @@ export default function ReactionGame({ diff }) {
 			{/* Knap som starter spillet */}
 			<h1 className='gameTitle'>Speed Test</h1>
 			{!start && (
-				<Button
-					classes={"centerAbsolute"}
-					onClick={handleClickBtn}
-					text={"Start Game"}
-				/>
+				<>
+					<Button
+						classes={"centerAbsolute"}
+						onClick={handleClickBtn}
+						text={"Start Game"}
+					/>
+					<div className='explainer'>
+						<p className='textBody'>
+							Press the start button and wait for the circle to appear on the
+							screen, then click it as fast as you can!
+						</p>
+					</div>
+				</>
 			)}
 			{/* Dialog boks som printer data ud som tekst */}
 			<dialog ref={diaRef}>
@@ -100,6 +109,9 @@ export default function ReactionGame({ diff }) {
 				<p id='printReactionTime'></p>
 				<div id='container-reaction'>
 					<Button onClick={handleClickDiaBtn} text={"Try again"} />
+					<Link className='buttonLink' to={"/"}>
+						<Button text={"Exit"} />
+					</Link>
 				</div>
 			</dialog>
 			<div ref={contRef} className='reactionContainer'>

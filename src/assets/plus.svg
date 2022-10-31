@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45"><g transform="translate(-2500.5 37)"><rect width="12" height="45" transform="translate(2517 -37)" fill="#fff"/><rect width="12" height="45" transform="translate(2545.5 -20.5) rotate(90)" fill="#fff"/></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Lag_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<g transform="translate(-2500.5 37)">
+	<path class="st0" d="M2523-37L2523-37c3.3,0,6,2.7,6,6V2c0,3.3-2.7,6-6,6l0,0c-3.3,0-6-2.7-6-6v-33C2517-34.3,2519.7-37,2523-37z"
+		/>
+	<path class="st0" d="M2545.5-14.5L2545.5-14.5c0,3.3-2.7,6-6,6h-33c-3.3,0-6-2.7-6-6v0c0-3.3,2.7-6,6-6h33
+		C2542.8-20.5,2545.5-17.8,2545.5-14.5z"/>
+</g>
+</svg>

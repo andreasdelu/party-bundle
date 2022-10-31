@@ -33,8 +33,17 @@ export default function Pictionary() {
 
 	//Setup af canvas og importerer spillerene
 	useEffect(() => {
-		canvasRef.current.width = window.innerWidth - 40;
-		canvasRef.current.height = canvasRef.current.width;
+		function resizeCanvas() {
+			if (window.innerWidth <= 400) {
+				canvasRef.current.width = window.innerWidth - 40;
+			} else {
+				canvasRef.current.width = 360;
+			}
+			canvasRef.current.height = canvasRef.current.width;
+		}
+		resizeCanvas();
+
+		window.addEventListener("resize", resizeCanvas, false);
 
 		setPlayers(JSON.parse(sessionStorage.getItem("players")));
 
@@ -48,6 +57,10 @@ export default function Pictionary() {
 		}
 
 		fetchWords();
+
+		return () => {
+			window.removeEventListener("resize", resizeCanvas, false);
+		};
 	}, []);
 
 	//Sætter et random ord som det nuværende ord der skal gættes, når siden loader
@@ -156,18 +169,34 @@ export default function Pictionary() {
 
 	//Skubber et punkt til points-arrayet, med tilhørende data, og loader canvas
 	function drawLine(e) {
-		const canvas = canvasContainer.current;
-		const x = e.targetTouches[0].clientX;
-		const y = e.targetTouches[0].clientY;
+		if (canDrawMobile) {
+			const canvas = canvasRef.current.getBoundingClientRect();
+			const x = e.targetTouches[0].clientX;
+			const y = e.targetTouches[0].clientY;
 
-		points.push({
-			x: Math.floor(x - canvas.offsetLeft),
-			y: Math.floor(y - canvas.offsetTop),
-			w: penWidth,
-			col: penColor,
-		});
+			points.push({
+				x: Math.floor(x - canvas.left),
+				y: Math.floor(y - canvas.top),
+				w: penWidth,
+				col: penColor,
+			});
 
-		requestAnimationFrame(canvasLoad);
+			requestAnimationFrame(canvasLoad);
+		}
+		if (canDrawMouse) {
+			const canvas = canvasRef.current.getBoundingClientRect();
+			const x = e.clientX;
+			const y = e.clientY;
+
+			points.push({
+				x: Math.floor(x - canvas.left),
+				y: Math.floor(y - canvas.top),
+				w: penWidth,
+				col: penColor,
+			});
+
+			requestAnimationFrame(canvasLoad);
+		}
 	}
 
 	//Sletter et billede fra bgs-arrayet
@@ -187,6 +216,8 @@ export default function Pictionary() {
 		const ctx = canvas.getContext("2d");
 		setBgs(bgs.concat(canvas.toDataURL()));
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		canDrawMouse = false;
+		canDrawMobile = false;
 	}
 
 	//Viser den lille indikator over pen-størrelse slideren
@@ -217,6 +248,9 @@ export default function Pictionary() {
 		);
 	}
 
+	let canDrawMouse = false;
+	let canDrawMobile = false;
+
 	return (
 		<>
 			<h1 style={{ margin: 0 }} className='gameTitle'>
@@ -238,8 +272,19 @@ export default function Pictionary() {
 				))}
 				<canvas
 					onTouchMove={drawLine}
-					onTouchStart={drawLine}
+					onTouchStart={(e) => {
+						canDrawMobile = true;
+						drawLine(e);
+					}}
 					onTouchEnd={() => handleTouchEnd()}
+					onMouseDown={(e) => {
+						canDrawMouse = true;
+						drawLine(e);
+					}}
+					onMouseMove={(e) => {
+						drawLine(e);
+					}}
+					onMouseUp={handleTouchEnd}
 					ref={canvasRef}
 					id='drawingCanvas'></canvas>
 			</div>
