@@ -16,6 +16,9 @@ import { saveTimeTotal, saveTimeSession } from "./modules/Save";
 import SpinWin from "./components/games/SpinWin";
 import Rewards from "./pages/Rewards";
 
+// ALLE GRUPPEMEDLEMMER HAR STÅET FOR UDVIKLINGEN AF ALLE FEATURES I DENNE APP
+// DERFOR ER DET IKKE MULIGT AT PUTTE ET ENKELT NAVN PÅ DE ENKELTE STYKKER KODE :)
+
 //Gemmer brugerens spilletid
 setInterval(() => {
 	saveTimeTotal();
